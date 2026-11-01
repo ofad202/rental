@@ -3,181 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Affordable rooms for rent in Kabayani St. Purok 6, Marikina. Own water & electric meters.">
-  <title>Rotche's House Rental | Marikina</title>
+  <meta name="description" content="Affordable units for rent in Marikina. Own water & electric connections.">
+  <title>Rotche's Residences | Marikina</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #F8F9FA; --navy: #1A2530; --navy-light: #2C3E50; --gold: #C59B5F; --gold-hover: #A8824B;
-      --white: #FFFFFF; --gray: #6C757D; --gray-light: #E9ECEF;
+      --bg-cream: #F7F5F0; --text-dark: #1A1A1A; --text-muted: #7A7A7A;
+      --terracotta: #B3694C; --terracotta-hover: #94553C; --border: #E0DCD3;
       --green: #2E7D4A; --red: #C43A2B;
-      --font-body: 'Inter', sans-serif; --font-display: 'Playfair Display', serif;
-      --transition: 0.3s ease; --container: 1500px;
+      --font-body: 'Jost', sans-serif; --font-display: 'Playfair Display', serif;
+      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+      --container: 1400px;
     }
     html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 90px; }
-    body { font-family: var(--font-body); color: var(--navy-light); background-color: var(--bg); line-height: 1.6; overflow-x: hidden; width: 100%; }
-    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--navy); line-height: 1.2; }
+    body { font-family: var(--font-body); color: var(--text-muted); background-color: var(--bg-cream); line-height: 1.6; overflow-x: hidden; width: 100%; }
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-dark); line-height: 1.1; }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
     ul { list-style: none; }
-    .container { width: 95%; max-width: var(--container); margin: 0 auto; }
+    .container { width: 90%; max-width: var(--container); margin: 0 auto; }
 
     /* NAV */
-    header { position: fixed; top: 0; left: 0; width: 100%; background: var(--white); z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: var(--transition); padding: 20px 0; }
-    header.scrolled { padding: 12px 0; }
+    header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: var(--transition); padding: 25px 0; background: transparent; }
+    header.scrolled { background: rgba(247, 245, 240, 0.95); backdrop-filter: blur(10px); padding: 15px 0; box-shadow: 0 1px 10px rgba(0,0,0,0.05); }
     .header-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 10px; }
-    .logo i { color: var(--gold); }
-    nav ul { display: flex; gap: 30px; align-items: center; }
-    nav a { font-weight: 500; font-size: 0.95rem; color: var(--navy-light); transition: var(--transition); }
-    nav a:hover { color: var(--gold); }
-    .nav-btn { background: var(--navy); color: var(--white); padding: 10px 24px; border-radius: 4px; font-weight: 500; transition: var(--transition); }
-    .nav-btn:hover { background: var(--gold); color: var(--white); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--navy); cursor: pointer; }
+    .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-dark); font-style: italic; }
+    nav ul { display: flex; gap: 40px; align-items: center; }
+    nav a { font-weight: 500; font-size: 0.85rem; color: var(--text-dark); transition: var(--transition); text-transform: uppercase; letter-spacing: 2px; }
+    nav a:hover { color: var(--terracotta); }
+    .nav-btn { background: var(--text-dark); color: #fff; padding: 12px 28px; font-weight: 500; transition: var(--transition); border-radius: 50px; }
+    .nav-btn:hover { background: var(--terracotta); color: #fff; }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--text-dark); cursor: pointer; }
 
-    /* HERO (Inayos ang height at padding) */
-    .hero { 
-      min-height: 85vh; 
-      background: linear-gradient(rgba(26, 37, 48, 0.75), rgba(26, 37, 48, 0.85)), url('apartment-hero.jpg') center/cover no-repeat; 
-      display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); 
-      padding: 150px 20px 80px 20px; /* Tamang awang para sa fixed header */
-      position: relative; width: 100%;
-    }
-    .hero-content { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
-    .hero-subtitle { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; font-weight: 700; display: inline-block; background: rgba(197, 155, 95, 0.2); padding: 8px 20px; border-radius: 50px; border: 1px solid var(--gold); }
-    .hero h1 { font-size: 5rem; color: var(--white); margin-bottom: 24px; text-shadow: 0 4px 15px rgba(0,0,0,0.6); line-height: 1.1; }
-    .hero p { font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.95); text-shadow: 0 2px 5px rgba(0,0,0,0.5); max-width: 800px; margin-left: auto; margin-right: auto; }
-    .hero-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 18px 45px; border-radius: 4px; font-weight: 600; font-size: 1.1rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(197, 155, 95, 0.4); }
-    .hero-btn:hover { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(197, 155, 95, 0.6); }
-    
-    /* Inayos para maging maliit na badge sa ilalim ng button */
-    .hero-availability { 
-      margin-top: 25px; font-size: 1rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; 
-      font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3); padding: 8px 20px; 
-      border-radius: 50px; width: fit-content; margin-left: auto; margin-right: auto; border: 1px solid rgba(255,255,255,0.2);
-    }
-    .hero-availability i { color: var(--green); font-size: 1.2rem; }
+    /* CREATIVE HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--bg-cream); overflow: hidden; }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 120px 10% 80px 10%; position: relative; z-index: 2; }
+    .hero-text h1 { font-size: 5rem; margin-bottom: 30px; letter-spacing: -1px; }
+    .hero-text h1 span { color: var(--terracotta); font-style: italic; }
+    .hero-text p { font-size: 1.1rem; max-width: 450px; margin-bottom: 40px; }
+    .hero-btn { display: inline-block; background: var(--terracotta); color: #fff; padding: 18px 45px; font-weight: 500; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); width: fit-content; border-radius: 50px; }
+    .hero-btn:hover { background: var(--terracotta-hover); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(179, 105, 76, 0.2); }
+    .hero-availability { margin-top: 30px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); letter-spacing: 1px; }
+    .hero-availability span { color: var(--green); }
+    .hero-image { background: url('hero.jpg') center/cover no-repeat; position: relative; }
+    .hero-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.1); }
 
     /* SECTIONS */
-    .section { padding: 100px 0; }
-    .section-gray { background: var(--bg); }
-    .section-white { background: var(--white); }
-    .section-header { text-align: center; max-width: 900px; margin: 0 auto 60px; }
-    .section-label { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 15px; }
-    .section-title { font-size: 3rem; margin-bottom: 15px; }
-    .section-desc { color: var(--gray); font-size: 1.1rem; }
+    .section { padding: 120px 0; position: relative; }
+    .section-light { background: #fff; }
+    .section-header { text-align: left; max-width: 800px; margin: 0 auto 80px; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
+    .section-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--terracotta); margin-bottom: 10px; font-weight: 600; }
+    .section-title { font-size: 3.5rem; }
+    .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 400px; text-align: right; }
 
     /* UNIT CARD */
-    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-    .unit-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--gray-light); transition: var(--transition); display: flex; flex-direction: column; position: relative; }
-    .unit-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-    .unit-card.occupied { opacity: 0.6; filter: grayscale(80%); pointer-events: none; }
-    .unit-card.occupied .unit-btn { background: var(--gray-light); color: var(--gray); cursor: not-allowed; }
-    
-    /* Inayos ang Image */
-    .unit-img { height: 220px; background: #E9ECEF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .unit-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.6s ease; }
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 40px; }
+    .unit-card { background: #fff; transition: var(--transition); display: flex; flex-direction: column; position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.03); }
+    .unit-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
+    .unit-card.occupied { opacity: 0.6; pointer-events: none; filter: grayscale(100%); }
+    .unit-img { height: 300px; position: relative; overflow: hidden; }
+    .unit-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
     .unit-card:hover .unit-img img { transform: scale(1.05); }
-    
-    .unit-price-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: var(--white); padding: 6px 15px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-    .unit-floor-badge { position: absolute; top: 15px; left: 15px; background: var(--navy); color: var(--white); padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
-    .unit-status-badge { position: absolute; bottom: 15px; left: 15px; padding: 6px 12px; border-radius: 4px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; z-index: 2; color: var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .unit-price-badge { position: absolute; bottom: 20px; left: 20px; background: #fff; color: var(--text-dark); padding: 10px 20px; font-weight: 600; font-size: 1rem; border-radius: 50px; }
+    .unit-floor-badge { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.9); color: var(--text-dark); padding: 6px 15px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; border-radius: 50px; }
+    .unit-status-badge { position: absolute; top: 20px; left: 20px; padding: 6px 15px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; color: #fff; border-radius: 50px; }
     .status-available { background: var(--green); }
     .status-occupied { background: var(--red); }
+    .unit-content { padding: 35px; flex-grow: 1; display: flex; flex-direction: column; }
+    .unit-content h3 { font-size: 2rem; margin-bottom: 5px; font-style: italic; }
     
-    .unit-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-    .unit-content h3 { font-size: 1.4rem; margin-bottom: 8px; }
-    .unit-location { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-    .unit-location i { color: var(--gold); }
-    .unit-features { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 25px; flex-grow: 1; }
-    .unit-features li { font-size: 0.95rem; color: var(--navy-light); display: flex; align-items: center; gap: 8px; }
-    .unit-features li i { color: var(--gold); font-size: 0.85rem; }
-    .unit-btn { display: block; text-align: center; background: var(--bg); color: var(--navy); font-weight: 600; font-size: 1rem; padding: 14px; border-radius: 4px; transition: var(--transition); border: 1px solid var(--gray-light); }
-    .unit-btn:hover { background: var(--navy); color: var(--white); }
+    /* CUSTOM TAG */
+    .unit-tag { background: var(--terracotta); color: #fff; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; text-transform: uppercase; font-weight: 600; }
 
-    /* FEATURES / WHY US & RULES */
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 70px; }
-    .feature-box { text-align: center; padding: 50px 30px; background: var(--bg); border-radius: 12px; border: 1px solid var(--gray-light); transition: var(--transition); }
-    .feature-box:hover { transform: translateY(-5px); border-color: var(--gold); }
-    .feature-icon { width: 80px; height: 80px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-    .feature-box h4 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--navy); }
-    .feature-box p { font-size: 1rem; color: var(--gray); }
-    .rules-box { background: var(--white); padding: 50px; border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .rules-box h3 { font-family: var(--font-body); font-size: 1.8rem; margin-bottom: 25px; color: var(--navy); display: flex; align-items: center; gap: 10px; }
-    .rules-box ul { list-style: disc; padding-left: 25px; }
-    .rules-box li { margin-bottom: 15px; color: var(--navy-light); font-size: 1.05rem; }
+    .unit-location { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
+    .unit-features { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 20px; flex-grow: 1; }
+    .unit-features li { font-size: 0.95rem; color: var(--text-dark); display: flex; align-items: flex-start; gap: 12px; line-height: 1.4; }
+    .unit-features li i { color: var(--terracotta); font-size: 0.8rem; margin-top: 4px; }
+    
+    /* BEST FOR TEXT */
+    .best-for { font-size: 0.85rem; color: var(--terracotta); font-weight: 600; margin-bottom: 25px; line-height: 1.4; font-style: italic; }
+
+    .unit-btn { display: block; text-align: center; background: transparent; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; padding: 18px; border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); border-radius: 50px; }
+    .unit-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
     /* FAQS */
-    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1000px; margin: 0 auto; }
-    .faq-item { background: var(--white); border-radius: 8px; border: 1px solid var(--gray-light); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
-    .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
-    .faq-question:hover { color: var(--gold); }
-    .faq-question i { transition: transform 0.3s ease; color: var(--gold); }
-    .faq-item.open .faq-question i { transform: rotate(180deg); }
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 25px; background: var(--bg); }
-    .faq-item.open .faq-answer { max-height: 300px; padding: 20px 25px; }
-    .faq-answer p { font-size: 1rem; color: var(--gray); margin: 0; }
+    .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+    .faq-question:hover { color: var(--terracotta); }
+    .faq-question i { transition: transform 0.3s ease; color: var(--terracotta); }
+    .faq-item.active .faq-answer { display: block; padding-top: 15px; padding-bottom: 25px; }
+    .faq-item.active .faq-question i { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 25px; background: var(--bg-cream); }
+    .faq-answer p { font-size: 1rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
 
-    /* INQUIRY FORM */
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); max-width: 1400px; margin: 0 auto; }
-    .contact-info { background: var(--navy); color: var(--white); padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-    .contact-info h3 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
-    .contact-info p { color: rgba(255,255,255,0.8); margin-bottom: 40px; font-size: 1.05rem; }
-    .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
-    .contact-item i { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; font-size: 1.1rem; }
-    .contact-item span, .contact-item a { font-size: 1.05rem; color: rgba(255,255,255,0.9); transition: var(--transition); }
-    .contact-item a:hover { color: var(--gold); }
-    .contact-form { padding: 60px; }
-    .contact-form h3 { font-size: 2.2rem; margin-bottom: 30px; }
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px 16px; border: 1px solid var(--gray-light); border-radius: 6px; font-family: var(--font-body); font-size: 16px; color: var(--navy); transition: var(--transition); background: var(--bg); }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 3px rgba(197, 155, 95, 0.1); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .submit-btn { width: 100%; background: var(--gold); color: var(--white); border: none; padding: 18px; font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: var(--transition); margin-top: 10px; }
-    .submit-btn:hover { background: var(--gold-hover); }
+    /* FORM */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1300px; margin: 0 auto; align-items: center; }
+    .contact-info { padding: 40px; }
+    .contact-info h3 { font-size: 3rem; margin-bottom: 20px; }
+    .contact-info p { color: var(--text-muted); margin-bottom: 40px; font-size: 1.05rem; }
+    .contact-item { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+    .contact-item i { width: 50px; height: 50px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--terracotta); box-shadow: 0 5px 15px rgba(0,0,0,0.05); flex-shrink: 0; }
+    .contact-item span, .contact-item a { font-size: 1.05rem; color: var(--text-dark); font-weight: 500; }
+    .contact-item a:hover { color: var(--terracotta); }
+    .contact-form { padding: 60px; background: #fff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+    .contact-form h3 { font-size: 2rem; margin-bottom: 30px; font-style: italic; }
+    .form-group { margin-bottom: 25px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 18px; border: 1px solid var(--border); font-family: var(--font-body); font-size: 16px; color: var(--text-dark); background: var(--bg-cream); transition: var(--transition); border-radius: 8px; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--terracotta); background: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .submit-btn { width: 100%; background: var(--terracotta); color: #fff; border: none; padding: 20px; font-family: var(--font-body); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: var(--transition); border-radius: 50px; margin-top: 10px; }
+    .submit-btn:hover { background: var(--terracotta-hover); }
 
     /* FOOTER */
-    footer { background: var(--navy); color: var(--white); padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
-    footer p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+    footer { background: var(--text-dark); color: rgba(255,255,255,0.6); padding: 60px 0; text-align: center; }
+    footer p { font-size: 0.9rem; letter-spacing: 1px; }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      .hero h1 { font-size: 3.5rem; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 140px 5% 60px; text-align: center; }
+      .hero-text p { margin-left: auto; margin-right: auto; }
+      .hero-btn { margin: 0 auto; }
+      .hero-image { height: 60vh; }
+      .section-header { flex-direction: column; text-align: center; gap: 20px; }
+      .section-desc { text-align: center; }
       .contact-wrapper { grid-template-columns: 1fr; }
-      .contact-info, .contact-form { padding: 40px; }
+      .contact-info { padding: 0; text-align: center; }
+      .contact-item { justify-content: center; }
     }
     @media (max-width: 768px) {
-      .hero { min-height: 100vh; padding: 140px 20px 80px 20px; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1rem; margin-bottom: 30px; }
-      .section-title { font-size: 2.2rem; }
-      .features-grid { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: 3.5rem; }
+      .section-title { font-size: 2.5rem; }
       .form-row { grid-template-columns: 1fr; }
-      .contact-info, .contact-form { padding: 30px 20px; }
-      .rules-box { padding: 30px 20px; }
-      
-      header { padding: 15px 0; }
+      .contact-form { padding: 40px 20px; }
+      header { padding: 15px 0; background: rgba(247, 245, 240, 0.95); }
       .menu-toggle { display: block; }
-      nav { position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); display: none; border-top: 1px solid var(--gray-light); }
+      nav { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 20px; border-bottom: 1px solid var(--border); display: none; }
       nav.active { display: block; }
-      nav ul { flex-direction: column; gap: 15px; align-items: stretch; text-align: center; }
-      .nav-btn { display: block; width: 100%; }
-
-      .contact-wrapper { border-radius: 0; box-shadow: none; }
-      .contact-info { border-radius: 12px 12px 0 0; margin: 0 10px; }
-      .contact-form { border-radius: 0 0 12px 12px; margin: 0 10px 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    }
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero-btn { width: 100%; justify-content: center; }
-      .unit-content { padding: 20px; }
-      .faq-question { padding: 20px; font-size: 1rem; }
+      nav ul { flex-direction: column; gap: 20px; align-items: stretch; text-align: center; }
     }
   </style>
 </head>
@@ -186,14 +153,14 @@
   <!-- HEADER -->
   <header id="header">
     <div class="container header-inner">
-      <a href="#home" class="logo"><i class="fas fa-home"></i> Rotche's House Rental</a>
+      <a href="#home" class="logo">Rotche's Residences</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
       <nav id="mainNav">
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#units">Rooms</a></li>
+          <li><a href="#units">Units</a></li>
           <li><a href="#amenities">Amenities & Rules</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="#inquire" class="nav-btn">Inquire Now</a></li>
@@ -202,28 +169,31 @@
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- CREATIVE SPLIT HERO -->
   <section class="hero" id="home">
-    <div class="container hero-content">
-      <span class="hero-subtitle">Quality Living in Marikina</span>
-      <h1>Affordable Rooms for Rent</h1>
-      <p>Located at 1800 Kabayani St. Purok 6, Marikina. Perfect for working professionals, students, and small families.</p>
-      <a href="#units" class="hero-btn">View Available Rooms <i class="fas fa-arrow-right"></i></a>
-      
-      <!-- Dito lalabas ang dynamic text para sa availability -->
+    <div class="hero-text">
+      <span class="section-label">Quality Living in Marikina</span>
+      <h1>Affordable Units <br>for <span>Rent.</span></h1>
+      <p>Located in Marikina City. Perfect for working professionals, students, and small families. Choose from our 9 well-maintained units.</p>
+      <a href="#units" class="hero-btn">View Available Units</a>
       <div class="hero-availability" id="hero-availability-text">
         <!-- Awtomatikong pupunuin ng JavaScript -->
       </div>
     </div>
+    <div class="hero-image">
+      <!-- Background image ay naka-set sa CSS -->
+    </div>
   </section>
 
   <!-- AVAILABLE UNITS -->
-  <section class="section section-gray" id="units">
+  <section class="section" id="units">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Availability</span>
-        <h2 class="section-title">Available Rooms</h2>
-        <p class="section-desc">We have 8 rooms available (4 on the 1st floor, 4 on the 2nd floor). Each room has its own water & electric meter.</p>
+        <div>
+          <span class="section-label">Availability</span>
+          <h2 class="section-title">Our Units</h2>
+        </div>
+        <p class="section-desc">We have 9 units available across our properties. Every unit has its own direct water and electric connection.</p>
       </div>
 
       <!-- Dito papasok ang mga cards galing sa JS -->
@@ -233,42 +203,47 @@
   </section>
 
   <!-- AMENITIES & HOUSE RULES -->
-  <section class="section section-white" id="amenities">
+  <section class="section section-light" id="amenities">
     <div class="container">
       
       <div class="section-header">
-        <span class="section-label">Peace of Mind</span>
-        <h2 class="section-title">Why Rent With Us?</h2>
+        <div>
+          <span class="section-label">Peace of Mind</span>
+          <h2 class="section-title">Why Rent With Us?</h2>
+        </div>
         <p class="section-desc">We prioritize the safety, comfort, and convenience of our tenants.</p>
       </div>
 
-      <div class="features-grid" style="margin-bottom: 80px;">
-        <div class="feature-box">
-          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-          <h4>Safe & Secure</h4>
-          <p>Gated compound with a responsive landlord. Safe for solo living or small families.</p>
+      <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 100px;">
+        <div class="feature-box" style="padding: 40px; border: 1px solid var(--border); background: var(--bg-cream); border-radius: 20px; text-align: center;">
+          <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--terracotta); margin-bottom: 25px;"></i>
+          <h4 style="font-family: var(--font-body); font-size: 1.2rem; margin-bottom: 15px; font-weight: 600;">Safe & Secure</h4>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">Gated compound with a responsive landlord. Safe for solo living or small families.</p>
         </div>
-        <div class="feature-box">
-          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-          <h4>Own Utility Meters</h4>
-          <p>Kanya-kanyang metro ng kuryente at tubig. Malinaw ang billing, walang panloloko sa singil.</p>
+        <div class="feature-box" style="padding: 40px; border: 1px solid var(--border); background: var(--bg-cream); border-radius: 20px; text-align: center;">
+          <i class="fas fa-bolt" style="font-size: 2.5rem; color: var(--terracotta); margin-bottom: 25px;"></i>
+          <h4 style="font-family: var(--font-body); font-size: 1.2rem; margin-bottom: 15px; font-weight: 600;">Own Utility Connections</h4>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">Each unit has its own direct water and electric connection. Transparent billing, you pay exactly what you consume.</p>
         </div>
-        <div class="feature-box">
-          <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <h4>Accessible Location</h4>
-          <p>Malapit sa palengke, sakayan, at mga tindahan. Madaling puntahan ng mga bisita.</p>
+        <div class="feature-box" style="padding: 40px; border: 1px solid var(--border); background: var(--bg-cream); border-radius: 20px; text-align: center;">
+          <i class="fas fa-map-marker-alt" style="font-size: 2.5rem; color: var(--terracotta); margin-bottom: 25px;"></i>
+          <h4 style="font-family: var(--font-body); font-size: 1.2rem; margin-bottom: 15px; font-weight: 600;">Accessible Location</h4>
+          <p style="font-size: 0.95rem; color: var(--text-muted);">Close to the market, public transport, and stores. Easy for guests to find.</p>
         </div>
       </div>
 
-      <div class="rules-box" id="rules">
-        <h3><i class="fas fa-clipboard-list" style="color: var(--gold);"></i> House Rules & Reminders</h3>
-        <ul>
-          <li><strong>No Smoking:</strong> Bawal manigarilyo sa loob ng unit at sa buong compound.</li>
-          <li><strong>No Illegal Drugs / Activities:</strong> Mahigpit na bawal ang droga, sugal, at kahit anong ilegal na gawain.</li>
-          <li><strong>No Drunkards / Loitering:</strong> Bawal ang mag-iingay at mag-inom sa labas ng unit. Igalang ang katahimikan ng kapitbahay.</li>
-          <li><strong>Street Parking Only:</strong> Walang sariling parking space. Pwede mag-park sa kalsada, pero <strong>"Park at your own risk"</strong>.</li>
-          <li><strong>1 Month Advance & 1 Month Deposit:</strong> Kailangan bayaran ito bago mag-move in.</li>
-          <li><strong>Utility Bills:</strong> Kanya-kanyang metro ng kuryente at tubig. Bayad agad sa tamang oras.</li>
+      <div class="rules-box" id="rules" style="background: #fff; padding: 60px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); max-width: 900px; margin: 0 auto;">
+        <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 30px; text-align: center; font-style: italic;">House Rules & Reminders</h3>
+        <ul style="list-style: none; padding-left: 0;">
+          
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">Valid ID & Contract Signing:</strong> Tenants must present a valid government ID and sign a 1-year lease contract before moving in.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">Annual Contract Renewal:</strong> The lease contract is for 1 year and must be renewed annually.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">No Smoking:</strong> Smoking is strictly prohibited inside the units and within the compound.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">No Illegal Drugs / Activities:</strong> Illegal drugs, gambling, and any unlawful activities are strictly prohibited.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">No Drunkards / Loitering:</strong> Avoid loud noises and drinking outside the units. Respect the peace of your neighbors.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">Street Parking Only:</strong> No private parking space. You may park on the street, but <strong style="color: var(--terracotta);">"Park at your own risk"</strong>.</li>
+          <li style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); font-size: 1.05rem;"><strong style="color: var(--text-dark);">1 Month Advance & 1 Month Deposit:</strong> These must be settled before moving in.</li>
+          <li style="font-size: 1.05rem;"><strong style="color: var(--text-dark);">Utility Bills:</strong> Each unit has its own direct water and electric connection. Please pay your bills on time.</li>
         </ul>
       </div>
 
@@ -276,51 +251,66 @@
   </section>
 
   <!-- FAQ SECTION -->
-  <section class="section section-gray" id="faq">
+  <section class="section" id="faq">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Questions</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-desc">Mga karaniwang tanong ng mga nag-iinquire.</p>
+        <div>
+          <span class="section-label">Questions</span>
+          <h2 class="section-title">Frequently Asked</h2>
+        </div>
+        <p class="section-desc">Common questions from prospective tenants.</p>
       </div>
 
-      <div class="faq-grid">
-        <div class="faq-item">
-          <button class="faq-question">Magkano ang renta at ano ang kasama? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Ang renta ay naglalaro sa ₱3,500 hanggang ₱5,000 depende sa unit. Walang kasamang kuryente at tubig dahil may kanya-kanyang metro ang bawat pinto.</p></div>
+      <div class="faq-grid" style="display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 900px; margin: 0 auto;">
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">How much is the rent and what's included? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>Rent ranges from ₱3,500 to ₱12,000. The ₱3,500 units are all-in-one rooms (CR and kitchen inside). The ₱4,500 units are more spacious with a separate CR, kitchen, and a large sink. Units 1 & 5 are spacious 2-door units, and Unit 9 is a 2-storey house with a rooftop. Electricity and water are not included as each unit has its own direct connection.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">Ilang rooms ang available at saan ito located? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Mayroon kaming 8 rooms (4 sa 1st floor, 4 sa 2nd floor). Nasa 1800 Kabayani St, Purok 6, Marikina kami. Tingnan ang "Available" badge sa itaas para sa mga bakanteng pinto.</p></div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">How many units are available and where are they located? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>We have 9 units available. 8 units are located at 1800 Kabayani St, Purok 6, Marikina, and 1 premium unit is at 45 Mango. Check the "Available" badges above for vacant units.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">Paano kung may bisita o magpapasama ako ng titira? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Kailangan munang ipaalam sa may-ari. Bawal ang biglaang dagdag ng occupant nang walang paalam.</p></div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">What are the requirements for renting? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>You will need to provide a valid government ID, sign a 1-year lease contract, and settle the 1-month advance and 1-month deposit. The contract is renewable annually.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">May parking ba? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Wala kaming sariling parking area. Pwede mag-park sa kalsada pero "Park at your own risk."</p></div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">What if I have visitors or someone moves in with me? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>You must inform the landlord beforehand. Sudden additions to the occupants without permission are strictly prohibited.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">Paano magbayad ng renta? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Kailangan ng 1 month advance at 1 month deposit bago mag-move in. Pwede via GCash, Maya, o Bank Transfer.</p></div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">Is parking available? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>We do not have a private parking area. You can park on the street, but it is strictly "Park at your own risk."</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question">Paano ako mag-a-apply o mag-iinquire? <i class="fas fa-chevron-down"></i></button>
-          <div class="faq-answer"><p>Pwede mag-fill out ng inquiry form sa website para ma-screen namin kayo, o kaya i-message kami sa Facebook o Viber.</p></div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">How do I pay the rent? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>A 1-month advance and 1-month deposit are required before moving in. Payments can be made via Cash, GCash, or Bank Transfer.</p></div>
         </div>
+        
+        <div class="faq-item" style="border: 1px solid var(--border); background: #fff; border-radius: 12px; overflow: hidden;">
+          <button class="faq-question">How do I apply or inquire? <i class="fas fa-plus"></i></button>
+          <div class="faq-answer"><p>You can fill out the inquiry form on this website to get screened, or send us a message on Facebook or Viber.</p></div>
+        </div>
+        
       </div>
     </div>
   </section>
   <!-- INQUIRY SECTION -->
-  <section class="section section-white" id="inquire">
+  <section class="section section-light" id="inquire">
     <div class="container">
       <div class="contact-wrapper">
         
         <!-- Left Side: Info -->
         <div class="contact-info">
+          <span class="section-label">Contact Us</span>
           <h3>Interested to Rent?</h3>
-          <p>Fill out the form to check room availability. We only accommodate serious and responsible tenants. I will get back to you as soon as possible.</p>
+          <p>Fill out the form to check unit availability. We only accommodate serious and responsible tenants. I will get back to you as soon as possible.</p>
           
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
@@ -331,35 +321,46 @@
             <span>+63 953 521 6790</span>
           </div>
           
-          <!-- VIBER LINK -->
           <div class="contact-item">
             <i class="fab fa-viber"></i>
             <a href="viber://chat?number=09294005848">0929 400 5848 (Viber)</a>
           </div>
 
-          <!-- MESSENGER LINK -->
           <div class="contact-item">
             <i class="fab fa-facebook-messenger"></i>
             <a href="https://m.me/JoseOmbrog93" target="_blank">m.me/JoseOmbrog93</a>
           </div>
 
-          <!-- GOOGLE MAPS LINK -->
-          <div class="contact-item" style="margin-top: 20px; margin-bottom: 30px;">
-            <i class="fas fa-map-marked-alt"></i>
-            <a href="https://maps.google.com/?q=1800+Kabayani+St,+Purok+6,+Marikina" target="_blank" style="text-decoration: underline; color: var(--gold);">View Rotche's House Rental on Maps</a>
+          <!-- MAP 1: KABAYANI ST (8 UNITS) -->
+          <div style="margin-top: 20px; margin-bottom: 20px;">
+            <h4 style="font-family: var(--font-body); font-size: 1rem; color: var(--text-dark); margin-bottom: 10px;">Main Property (Units 1-8)</h4>
+            <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                style="border:0; filter: grayscale(20%);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                src="https://maps.google.com/maps?q=J3WR%2B3M%20Marikina,%20Metro%20Manila&t=&z=17&ie=UTF8&iwloc=&output=embed">
+              </iframe>
+            </div>
           </div>
 
-          <!-- AKTWAL NA MAPA (Google Maps Embed) -->
-          <div style="width: 100%; height: 220px; border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1);">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade" 
-              src="https://maps.google.com/maps?q=J3WR%2B3M%20Marikina,%20Metro%20Manila&t=&z=17&ie=UTF8&iwloc=&output=embed">
-            </iframe>
+          <!-- MAP 2: 45 MANGO (PREMIUM UNIT) -->
+          <div>
+            <h4 style="font-family: var(--font-body); font-size: 1rem; color: var(--text-dark); margin-bottom: 10px;">Premium Unit (Unit 9)</h4>
+            <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                style="border:0; filter: grayscale(20%);" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                src="https://maps.google.com/maps?q=45+Mango,+Marikina,+Metro+Manila&t=&z=17&ie=UTF8&iwloc=&output=embed">
+              </iframe>
+            </div>
           </div>
         </div>
 
@@ -379,11 +380,11 @@
               </div>
             </div>
 
-            <!-- FB LINK NG UUPA -->
             <div class="form-row">
               <div class="form-group">
                 <label for="tenant_fb">Your Facebook Profile Link</label>
                 <input type="url" id="tenant_fb" name="tenant_fb" placeholder="https://facebook.com/your.profile" required>
+                <small style="display: block; margin-top: 5px; color: var(--text-muted); font-size: 0.75rem;">Note: A valid government ID will be required upon move-in.</small>
               </div>
               <div class="form-group">
                 <label for="occupation">Occupation / Work</label>
@@ -403,21 +404,18 @@
                 </select>
               </div>
               
-              <!-- Dynamic Dropdown (Available lang) -->
               <div class="form-group">
-                <label for="unit_choice">Preferred Room</label>
+                <label for="unit_choice">Preferred Unit</label>
                 <select id="unit_choice" name="unit_choice" required>
-                  <option value="">Select an available room...</option>
-                  <!-- Awtomatikong pupunuin ng JavaScript -->
+                  <option value="">Select an available unit...</option>
                 </select>
               </div>
             </div>
 
-            <!-- GUARANTOR INFO -->
             <div class="form-row">
               <div class="form-group">
                 <label for="guarantor_name">Guarantor Name</label>
-                <input type="text" id="guarantor_name" name="guarantor_name" placeholder="Pangalan ng guarantor" required>
+                <input type="text" id="guarantor_name" name="guarantor_name" placeholder="Guarantor's full name" required>
               </div>
               <div class="form-group">
                 <label for="guarantor_phone">Guarantor Contact Number</label>
@@ -432,11 +430,11 @@
 
             <div class="form-group">
               <label for="message">Message / Questions</label>
-              <textarea id="message" name="message" rows="3" placeholder="Any specific questions about the room? (e.g., Pakita ng loob, exact price, etc.)" required></textarea>
+              <textarea id="message" name="message" rows="3" placeholder="Any specific questions about the unit?" required></textarea>
             </div>
 
             <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
-            <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></div>
+            <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 500; font-size: 0.9rem; display: none;"></div>
 
           </form>
         </div>
@@ -448,25 +446,27 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>&copy; 2026 Rotche's House Rental. All rights reserved. | Kabayani St., Marikina City</p>
+      <p>&copy; 2026 Rotche's Residences. All rights reserved. | Marikina City</p>
     </div>
   </footer>
 
   <script>
     /* ========================================================
        ANG "MAGIC SWITCH" - DITO MO LANG BABAGUHIN ANG STATUS AT PRICE
-       1 = Available (Bukas / Green)
-       0 = Occupied (Sarado / Red)
+       1 = Available (Bukas)
+       0 = Occupied (Sarado)
     ======================================================== */
     const rooms = [
-      { id: 1, price: 5000, floor: '1st Floor', status: 0 }, // Room 1
-      { id: 2, price: 4500, floor: '1st Floor', status: 0 }, // Room 2
-      { id: 3, price: 3500, floor: '1st Floor', status: 1 }, // Room 3 (Bakante)
-      { id: 4, price: 3500, floor: '1st Floor', status: 0 }, // Room 4
-      { id: 5, price: 5000, floor: '2nd Floor', status: 0 }, // Room 5
-      { id: 6, price: 4500, floor: '2nd Floor', status: 0 }, // Room 6
-      { id: 7, price: 3500, floor: '2nd Floor', status: 0 }, // Room 7
-      { id: 8, price: 3500, floor: '2nd Floor', status: 0 }  // Room 8
+      { id: 1, price: 5000, floor: '1st Floor', status: 0, desc: 'Spacious 2-Door Unit', bestFor: 'Best for small families or those needing extra space.' },
+      { id: 2, price: 4500, floor: '1st Floor', status: 0, desc: 'Separate CR & Kitchen with Large Sink', bestFor: 'Best for couples or those who love to cook.' },
+      { id: 3, price: 3500, floor: '1st Floor', status: 1, desc: 'All-in-one (CR & Kitchen Inside)', bestFor: 'Best for solo professionals or students.' }, // Bakante
+      { id: 4, price: 3500, floor: '1st Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)', bestFor: 'Best for solo professionals or students.' },
+      { id: 5, price: 5000, floor: '2nd Floor', status: 0, desc: 'Spacious 2-Door Unit', bestFor: 'Best for small families or those needing extra space.' },
+      { id: 6, price: 4500, floor: '2nd Floor', status: 0, desc: 'Separate CR & Kitchen with Large Sink', bestFor: 'Best for couples or those who love to cook.' },
+      { id: 7, price: 3500, floor: '2nd Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)', bestFor: 'Best for solo professionals or students.' },
+      { id: 8, price: 3500, floor: '2nd Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)', bestFor: 'Best for solo professionals or students.' },
+      // BAGONG UNIT 9
+      { id: 9, price: 12000, floor: '2-Storey', status: 1, location: '45 Mango, Marikina', desc: '2-Storey House with Rooftop', bestFor: 'Best for families or groups wanting a full house experience.' } 
     ];
 
     /* --- HINDI MO NA KAILANGANG GALAWIN ANG MGA NASA BABA --- */
@@ -486,6 +486,12 @@
       rooms.forEach(room => {
         const isAvailable = room.status === 1;
         const priceStr = formatPrice(room.price);
+        const roomLocation = room.location ? room.location : 'Kabayani St., Marikina';
+        const roomDesc = room.desc ? room.desc : 'Own CR';
+        const bestFor = room.bestFor ? room.bestFor : '';
+        
+        // Tag style para sa unit type
+        let tagStyle = "background: var(--terracotta); color: #fff; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; text-transform: uppercase; font-weight: 600;";
         
         if (isAvailable) {
           availableRoomsList.push({ id: room.id, price: room.price });
@@ -493,20 +499,25 @@
           htmlContent += `
             <div class="unit-card">
               <div class="unit-img">
-                <img src="apartment-ext${room.id}.jpg" alt="Room ${room.id}">
+                <img src="room${room.id}.jpg" alt="Unit ${room.id}">
                 <span class="unit-floor-badge">${room.floor}</span>
-                <span class="unit-price-badge">${priceStr} / month</span>
                 <span class="unit-status-badge status-available">Available</span>
+                <span class="unit-price-badge">${priceStr}</span>
               </div>
               <div class="unit-content">
-                <h3>Room ${room.id}</h3>
-                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> Kabayani St., Marikina</p>
+                <h3>Unit ${room.id}</h3>
+                <span style="${tagStyle}">${room.desc.split('(')[0].trim()}</span>
+                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> ${roomLocation}</p>
+                
                 <ul class="unit-features">
-                  <li><i class="fas fa-check"></i> Own CR</li>
-                  <li><i class="fas fa-check"></i> Own Sub-metered Water & Electric</li>
+                  <li><i class="fas fa-check"></i> ${roomDesc}</li>
+                  <li><i class="fas fa-check"></i> Own Water & Electric Connection</li>
                   <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
                 </ul>
-                <a href="#inquire" class="unit-btn">Check Availability</a>
+                
+                <p class="best-for">${bestFor}</p>
+                
+                <a href="#inquire" class="unit-btn">Inquire Now</a>
               </div>
             </div>
           `;
@@ -514,20 +525,25 @@
           htmlContent += `
             <div class="unit-card occupied">
               <div class="unit-img">
-                <img src="apartment-ext${room.id}.jpg" alt="Room ${room.id}">
+                <img src="room${room.id}.jpg" alt="Unit ${room.id}">
                 <span class="unit-floor-badge">${room.floor}</span>
-                <span class="unit-price-badge">${priceStr} / month</span>
                 <span class="unit-status-badge status-occupied">Occupied</span>
+                <span class="unit-price-badge">${priceStr}</span>
               </div>
               <div class="unit-content">
-                <h3>Room ${room.id}</h3>
-                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> Kabayani St., Marikina</p>
+                <h3>Unit ${room.id}</h3>
+                <span style="${tagStyle}">${room.desc.split('(')[0].trim()}</span>
+                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> ${roomLocation}</p>
+                
                 <ul class="unit-features">
-                  <li><i class="fas fa-check"></i> Own CR</li>
-                  <li><i class="fas fa-check"></i> Own Sub-metered Water & Electric</li>
+                  <li><i class="fas fa-check"></i> ${roomDesc}</li>
+                  <li><i class="fas fa-check"></i> Own Water & Electric Connection</li>
                   <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
                 </ul>
-                <span class="unit-btn">Currently Occupied</span>
+                
+                <p class="best-for">${bestFor}</p>
+                
+                <span class="unit-btn" style="border-color: var(--border); color: var(--text-muted); cursor: not-allowed;">Occupied</span>
               </div>
             </div>
           `;
@@ -536,24 +552,24 @@
 
       roomsContainer.innerHTML = htmlContent;
 
-      roomDropdown.innerHTML = '<option value="">Select an available room...</option>';
+      roomDropdown.innerHTML = '<option value="">Select an available unit...</option>';
       if (availableRoomsList.length > 0) {
         availableRoomsList.forEach(room => {
           let opt = document.createElement('option');
-          opt.value = `Room ${room.id} (${formatPrice(room.price)})`;
-          opt.textContent = `Room ${room.id} - ${formatPrice(room.price)}/month`;
+          opt.value = `Unit ${room.id} (${formatPrice(room.price)})`;
+          opt.textContent = `Unit ${room.id} - ${formatPrice(room.price)}/month`;
           roomDropdown.appendChild(opt);
         });
       } else {
-        roomDropdown.innerHTML = '<option value="">Walang bakanteng kwarto sa ngayon</option>';
+        roomDropdown.innerHTML = '<option value="">No vacant units at the moment</option>';
         roomDropdown.disabled = true;
       }
 
       if (availableRoomsList.length > 0) {
-        let roomNames = availableRoomsList.map(r => `Room ${r.id}`).join(', ');
-        heroAvailability.innerHTML = `<i class="fas fa-check-circle"></i> ${availableRoomsList.length} Room(s) Available Now (${roomNames})`;
+        let roomNames = availableRoomsList.map(r => `Unit ${r.id}`).join(', ');
+        heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--green); vertical-align: middle; margin-right: 5px;"></i> ${availableRoomsList.length} Unit(s) Available (${roomNames})`;
       } else {
-        heroAvailability.innerHTML = `<i class="fas fa-times-circle" style="color: var(--red);"></i> Fully Occupied`;
+        heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--red); vertical-align: middle; margin-right: 5px;"></i> Fully Occupied`;
       }
     }
 
@@ -593,20 +609,21 @@
       dateInput.min = `${yyyy}-${mm}-${dd}`;
     }
 
-    /* FAQ ACCORDION */
+    /* FAQ ACCORDION (Inayos na) */
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(btn => {
       btn.addEventListener('click', () => {
         const parentItem = btn.parentElement;
-        const isOpen = parentItem.classList.contains('open');
         
+        // Isara lahat ng ibang bukas
         document.querySelectorAll('.faq-item').forEach(item => {
-          item.classList.remove('open');
+          if (item !== parentItem) {
+            item.classList.remove('active');
+          }
         });
 
-        if (!isOpen) {
-          parentItem.classList.add('open');
-        }
+        // I-toggle (bukas/sara) ang pinindot
+        parentItem.classList.toggle('active');
       });
     });
 
@@ -620,7 +637,7 @@
         e.preventDefault();
         
         const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.innerHTML = 'Sending...';
         submitBtn.disabled = true;
         formStatus.style.display = 'none';
 
@@ -634,17 +651,17 @@
           if (response.ok) {
             formStatus.style.display = 'block';
             formStatus.style.color = '#2E7D4A';
-            formStatus.innerHTML = '✅ Inquiry sent successfully! I will contact you soon.';
+            formStatus.innerHTML = 'Inquiry sent successfully. We will contact you soon.';
             form.reset();
           } else {
             formStatus.style.display = 'block';
             formStatus.style.color = '#C43A2B';
-            formStatus.innerHTML = '❌ Something went wrong. Please try again or contact me directly.';
+            formStatus.innerHTML = 'Something went wrong. Please try again.';
           }
         } catch (error) {
           formStatus.style.display = 'block';
           formStatus.style.color = '#C43A2B';
-          formStatus.innerHTML = '⚠️ Network error. Please check your internet connection.';
+          formStatus.innerHTML = 'Network error. Please check your connection.';
         } finally {
           submitBtn.innerHTML = originalText;
           submitBtn.disabled = false;
