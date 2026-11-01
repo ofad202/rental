@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Affordable rooms for rent in Kabayani St. Purok 6, Marikina. Own water & electric meters.">
+  <title>Rotche's House Rental | Marikina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #F8F9FA; --navy: #1A2530; --navy-light: #2C3E50; --gold: #C59B5F; --gold-hover: #A8824B;
+      --white: #FFFFFF; --gray: #6C757D; --gray-light: #E9ECEF;
+      --green: #2E7D4A; --red: #C43A2B;
+      --font-body: 'Inter', sans-serif; --font-display: 'Playfair Display', serif;
+      --transition: 0.3s ease; --container: 1500px;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 90px; }
+    body { font-family: var(--font-body); color: var(--navy-light); background-color: var(--bg); line-height: 1.6; overflow-x: hidden; width: 100%; }
+    h1, h2, h3, h4 { font-family: var(--font-display); color: var(--navy); line-height: 1.2; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    .container { width: 95%; max-width: var(--container); margin: 0 auto; }
+
+    /* NAV */
+    header { position: fixed; top: 0; left: 0; width: 100%; background: var(--white); z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: var(--transition); padding: 20px 0; }
+    header.scrolled { padding: 12px 0; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+    .logo i { color: var(--gold); }
+    nav ul { display: flex; gap: 30px; align-items: center; }
+    nav a { font-weight: 500; font-size: 0.95rem; color: var(--navy-light); transition: var(--transition); }
+    nav a:hover { color: var(--gold); }
+    .nav-btn { background: var(--navy); color: var(--white); padding: 10px 24px; border-radius: 4px; font-weight: 500; transition: var(--transition); }
+    .nav-btn:hover { background: var(--gold); color: var(--white); }
+    .menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--navy); cursor: pointer; }
+
+    /* HERO (Inayos ang height at padding) */
+    .hero { 
+      min-height: 85vh; 
+      background: linear-gradient(rgba(26, 37, 48, 0.75), rgba(26, 37, 48, 0.85)), url('apartment-hero.jpg') center/cover no-repeat; 
+      display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); 
+      padding: 150px 20px 80px 20px; /* Tamang awang para sa fixed header */
+      position: relative; width: 100%;
+    }
+    .hero-content { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
+    .hero-subtitle { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; color: var(--gold); margin-bottom: 20px; font-weight: 700; display: inline-block; background: rgba(197, 155, 95, 0.2); padding: 8px 20px; border-radius: 50px; border: 1px solid var(--gold); }
+    .hero h1 { font-size: 5rem; color: var(--white); margin-bottom: 24px; text-shadow: 0 4px 15px rgba(0,0,0,0.6); line-height: 1.1; }
+    .hero p { font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.95); text-shadow: 0 2px 5px rgba(0,0,0,0.5); max-width: 800px; margin-left: auto; margin-right: auto; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--gold); color: var(--white); padding: 18px 45px; border-radius: 4px; font-weight: 600; font-size: 1.1rem; transition: var(--transition); box-shadow: 0 4px 15px rgba(197, 155, 95, 0.4); }
+    .hero-btn:hover { background: var(--gold-hover); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(197, 155, 95, 0.6); }
+    
+    /* Inayos para maging maliit na badge sa ilalim ng button */
+    .hero-availability { 
+      margin-top: 25px; font-size: 1rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 8px; 
+      font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.5); background: rgba(0,0,0,0.3); padding: 8px 20px; 
+      border-radius: 50px; width: fit-content; margin-left: auto; margin-right: auto; border: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero-availability i { color: var(--green); font-size: 1.2rem; }
+
+    /* SECTIONS */
+    .section { padding: 100px 0; }
+    .section-gray { background: var(--bg); }
+    .section-white { background: var(--white); }
+    .section-header { text-align: center; max-width: 900px; margin: 0 auto 60px; }
+    .section-label { display: inline-block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 15px; }
+    .section-title { font-size: 3rem; margin-bottom: 15px; }
+    .section-desc { color: var(--gray); font-size: 1.1rem; }
+
+    /* UNIT CARD */
+    .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+    .unit-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid var(--gray-light); transition: var(--transition); display: flex; flex-direction: column; position: relative; }
+    .unit-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    .unit-card.occupied { opacity: 0.6; filter: grayscale(80%); pointer-events: none; }
+    .unit-card.occupied .unit-btn { background: var(--gray-light); color: var(--gray); cursor: not-allowed; }
+    
+    /* Inayos ang Image */
+    .unit-img { height: 220px; background: #E9ECEF; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .unit-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform 0.6s ease; }
+    .unit-card:hover .unit-img img { transform: scale(1.05); }
+    
+    .unit-price-badge { position: absolute; top: 15px; right: 15px; background: var(--gold); color: var(--white); padding: 6px 15px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .unit-floor-badge { position: absolute; top: 15px; left: 15px; background: var(--navy); color: var(--white); padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; z-index: 2; }
+    .unit-status-badge { position: absolute; bottom: 15px; left: 15px; padding: 6px 12px; border-radius: 4px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; z-index: 2; color: var(--white); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .status-available { background: var(--green); }
+    .status-occupied { background: var(--red); }
+    
+    .unit-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+    .unit-content h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .unit-location { color: var(--gray); font-size: 0.9rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .unit-location i { color: var(--gold); }
+    .unit-features { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 25px; flex-grow: 1; }
+    .unit-features li { font-size: 0.95rem; color: var(--navy-light); display: flex; align-items: center; gap: 8px; }
+    .unit-features li i { color: var(--gold); font-size: 0.85rem; }
+    .unit-btn { display: block; text-align: center; background: var(--bg); color: var(--navy); font-weight: 600; font-size: 1rem; padding: 14px; border-radius: 4px; transition: var(--transition); border: 1px solid var(--gray-light); }
+    .unit-btn:hover { background: var(--navy); color: var(--white); }
+
+    /* FEATURES / WHY US & RULES */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 70px; }
+    .feature-box { text-align: center; padding: 50px 30px; background: var(--bg); border-radius: 12px; border: 1px solid var(--gray-light); transition: var(--transition); }
+    .feature-box:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .feature-icon { width: 80px; height: 80px; background: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .feature-box h4 { font-family: var(--font-body); font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--navy); }
+    .feature-box p { font-size: 1rem; color: var(--gray); }
+    .rules-box { background: var(--white); padding: 50px; border-radius: 12px; border-left: 5px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .rules-box h3 { font-family: var(--font-body); font-size: 1.8rem; margin-bottom: 25px; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+    .rules-box ul { list-style: disc; padding-left: 25px; }
+    .rules-box li { margin-bottom: 15px; color: var(--navy-light); font-size: 1.05rem; }
+
+    /* FAQS */
+    .faq-grid { display: grid; grid-template-columns: 1fr; gap: 15px; max-width: 1000px; margin: 0 auto; }
+    .faq-item { background: var(--white); border-radius: 8px; border: 1px solid var(--gray-light); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+    .faq-question { width: 100%; text-align: left; padding: 25px; background: none; border: none; font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: var(--transition); }
+    .faq-question:hover { color: var(--gold); }
+    .faq-question i { transition: transform 0.3s ease; color: var(--gold); }
+    .faq-item.open .faq-question i { transform: rotate(180deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; padding: 0 25px; background: var(--bg); }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 20px 25px; }
+    .faq-answer p { font-size: 1rem; color: var(--gray); margin: 0; }
+
+    /* INQUIRY FORM */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.08); max-width: 1400px; margin: 0 auto; }
+    .contact-info { background: var(--navy); color: var(--white); padding: 60px; display: flex; flex-direction: column; justify-content: center; }
+    .contact-info h3 { color: var(--white); font-size: 2.2rem; margin-bottom: 20px; }
+    .contact-info p { color: rgba(255,255,255,0.8); margin-bottom: 40px; font-size: 1.05rem; }
+    .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+    .contact-item i { width: 45px; height: 45px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; font-size: 1.1rem; }
+    .contact-item span, .contact-item a { font-size: 1.05rem; color: rgba(255,255,255,0.9); transition: var(--transition); }
+    .contact-item a:hover { color: var(--gold); }
+    .contact-form { padding: 60px; }
+    .contact-form h3 { font-size: 2.2rem; margin-bottom: 30px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px 16px; border: 1px solid var(--gray-light); border-radius: 6px; font-family: var(--font-body); font-size: 16px; color: var(--navy); transition: var(--transition); background: var(--bg); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: var(--white); box-shadow: 0 0 0 3px rgba(197, 155, 95, 0.1); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .submit-btn { width: 100%; background: var(--gold); color: var(--white); border: none; padding: 18px; font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; border-radius: 6px; cursor: pointer; transition: var(--transition); margin-top: 10px; }
+    .submit-btn:hover { background: var(--gold-hover); }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: var(--white); padding: 40px 0; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+    footer p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 3.5rem; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .contact-info, .contact-form { padding: 40px; }
+    }
+    @media (max-width: 768px) {
+      .hero { min-height: 100vh; padding: 140px 20px 80px 20px; }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { font-size: 1rem; margin-bottom: 30px; }
+      .section-title { font-size: 2.2rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-info, .contact-form { padding: 30px 20px; }
+      .rules-box { padding: 30px 20px; }
+      
+      header { padding: 15px 0; }
+      .menu-toggle { display: block; }
+      nav { position: absolute; top: 100%; left: 0; width: 100%; background: var(--white); padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); display: none; border-top: 1px solid var(--gray-light); }
+      nav.active { display: block; }
+      nav ul { flex-direction: column; gap: 15px; align-items: stretch; text-align: center; }
+      .nav-btn { display: block; width: 100%; }
+
+      .contact-wrapper { border-radius: 0; box-shadow: none; }
+      .contact-info { border-radius: 12px 12px 0 0; margin: 0 10px; }
+      .contact-form { border-radius: 0 0 12px 12px; margin: 0 10px 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero-btn { width: 100%; justify-content: center; }
+      .unit-content { padding: 20px; }
+      .faq-question { padding: 20px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="container header-inner">
+      <a href="#home" class="logo"><i class="fas fa-home"></i> Rotche's House Rental</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#units">Rooms</a></li>
+          <li><a href="#amenities">Amenities & Rules</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#inquire" class="nav-btn">Inquire Now</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <span class="hero-subtitle">Quality Living in Marikina</span>
+      <h1>Affordable Rooms for Rent</h1>
+      <p>Located at 1800 Kabayani St. Purok 6, Marikina. Perfect for working professionals, students, and small families.</p>
+      <a href="#units" class="hero-btn">View Available Rooms <i class="fas fa-arrow-right"></i></a>
+      
+      <!-- Dito lalabas ang dynamic text para sa availability -->
+      <div class="hero-availability" id="hero-availability-text">
+        <!-- Awtomatikong pupunuin ng JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- AVAILABLE UNITS -->
+  <section class="section section-gray" id="units">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Availability</span>
+        <h2 class="section-title">Available Rooms</h2>
+        <p class="section-desc">We have 8 rooms available (4 on the 1st floor, 4 on the 2nd floor). Each room has its own water & electric meter.</p>
+      </div>
+
+      <!-- Dito papasok ang mga cards galing sa JS -->
+      <div class="units-grid" id="rooms-container">
+      </div>
+    </div>
+  </section>
+
+  <!-- AMENITIES & HOUSE RULES -->
+  <section class="section section-white" id="amenities">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-label">Peace of Mind</span>
+        <h2 class="section-title">Why Rent With Us?</h2>
+        <p class="section-desc">We prioritize the safety, comfort, and convenience of our tenants.</p>
+      </div>
+
+      <div class="features-grid" style="margin-bottom: 80px;">
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>Safe & Secure</h4>
+          <p>Gated compound with a responsive landlord. Safe for solo living or small families.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h4>Own Utility Meters</h4>
+          <p>Kanya-kanyang metro ng kuryente at tubig. Malinaw ang billing, walang panloloko sa singil.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <h4>Accessible Location</h4>
+          <p>Malapit sa palengke, sakayan, at mga tindahan. Madaling puntahan ng mga bisita.</p>
+        </div>
+      </div>
+
+      <div class="rules-box" id="rules">
+        <h3><i class="fas fa-clipboard-list" style="color: var(--gold);"></i> House Rules & Reminders</h3>
+        <ul>
+          <li><strong>No Smoking:</strong> Bawal manigarilyo sa loob ng unit at sa buong compound.</li>
+          <li><strong>No Illegal Drugs / Activities:</strong> Mahigpit na bawal ang droga, sugal, at kahit anong ilegal na gawain.</li>
+          <li><strong>No Drunkards / Loitering:</strong> Bawal ang mag-iingay at mag-inom sa labas ng unit. Igalang ang katahimikan ng kapitbahay.</li>
+          <li><strong>Street Parking Only:</strong> Walang sariling parking space. Pwede mag-park sa kalsada, pero <strong>"Park at your own risk"</strong>.</li>
+          <li><strong>1 Month Advance & 1 Month Deposit:</strong> Kailangan bayaran ito bago mag-move in.</li>
+          <li><strong>Utility Bills:</strong> Kanya-kanyang metro ng kuryente at tubig. Bayad agad sa tamang oras.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section section-gray" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Mga karaniwang tanong ng mga nag-iinquire.</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <button class="faq-question">Magkano ang renta at ano ang kasama? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Ang renta ay naglalaro sa ₱3,500 hanggang ₱5,000 depende sa unit. Walang kasamang kuryente at tubig dahil may kanya-kanyang metro ang bawat pinto.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Ilang rooms ang available at saan ito located? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Mayroon kaming 8 rooms (4 sa 1st floor, 4 sa 2nd floor). Nasa 1800 Kabayani St, Purok 6, Marikina kami. Tingnan ang "Available" badge sa itaas para sa mga bakanteng pinto.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Paano kung may bisita o magpapasama ako ng titira? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Kailangan munang ipaalam sa may-ari. Bawal ang biglaang dagdag ng occupant nang walang paalam.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">May parking ba? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Wala kaming sariling parking area. Pwede mag-park sa kalsada pero "Park at your own risk."</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Paano magbayad ng renta? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Kailangan ng 1 month advance at 1 month deposit bago mag-move in. Pwede via GCash, Maya, o Bank Transfer.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Paano ako mag-a-apply o mag-iinquire? <i class="fas fa-chevron-down"></i></button>
+          <div class="faq-answer"><p>Pwede mag-fill out ng inquiry form sa website para ma-screen namin kayo, o kaya i-message kami sa Facebook o Viber.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- INQUIRY SECTION -->
+  <section class="section section-white" id="inquire">
+    <div class="container">
+      <div class="contact-wrapper">
+        
+        <!-- Left Side: Info -->
+        <div class="contact-info">
+          <h3>Interested to Rent?</h3>
+          <p>Fill out the form to check room availability. We only accommodate serious and responsible tenants. I will get back to you as soon as possible.</p>
+          
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>1800 Kabayani St, Purok 6,<br>Marikina City</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <span>+63 953 521 6790</span>
+          </div>
+          
+          <!-- VIBER LINK -->
+          <div class="contact-item">
+            <i class="fab fa-viber"></i>
+            <a href="viber://chat?number=09294005848">0929 400 5848 (Viber)</a>
+          </div>
+
+          <!-- MESSENGER LINK -->
+          <div class="contact-item">
+            <i class="fab fa-facebook-messenger"></i>
+            <a href="https://m.me/JoseOmbrog93" target="_blank">m.me/JoseOmbrog93</a>
+          </div>
+
+          <!-- GOOGLE MAPS LINK -->
+          <div class="contact-item" style="margin-top: 20px; margin-bottom: 30px;">
+            <i class="fas fa-map-marked-alt"></i>
+            <a href="https://maps.google.com/?q=1800+Kabayani+St,+Purok+6,+Marikina" target="_blank" style="text-decoration: underline; color: var(--gold);">View Rotche's House Rental on Maps</a>
+          </div>
+
+          <!-- AKTWAL NA MAPA (Google Maps Embed) -->
+          <div style="width: 100%; height: 220px; border-radius: 12px; overflow: hidden; border: 2px solid rgba(255,255,255,0.1);">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade" 
+              src="https://maps.google.com/maps?q=J3WR%2B3M%20Marikina,%20Metro%20Manila&t=&z=17&ie=UTF8&iwloc=&output=embed">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Right Side: Form -->
+        <div class="contact-form">
+          <h3>Tenant Inquiry Form</h3>
+          <form id="rental-form" action="https://formspree.io/f/mnpjzdwz" method="POST">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Mobile Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+              </div>
+            </div>
+
+            <!-- FB LINK NG UUPA -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="tenant_fb">Your Facebook Profile Link</label>
+                <input type="url" id="tenant_fb" name="tenant_fb" placeholder="https://facebook.com/your.profile" required>
+              </div>
+              <div class="form-group">
+                <label for="occupation">Occupation / Work</label>
+                <input type="text" id="occupation" name="occupation" placeholder="e.g. BPO Employee, Student" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="occupants">No. of Occupants</label>
+                <select id="occupants" name="occupants" required>
+                  <option value="">Select...</option>
+                  <option value="1 person">1 person</option>
+                  <option value="2 persons">2 persons</option>
+                  <option value="3 persons">3 persons</option>
+                  <option value="4 or more">4 or more</option>
+                </select>
+              </div>
+              
+              <!-- Dynamic Dropdown (Available lang) -->
+              <div class="form-group">
+                <label for="unit_choice">Preferred Room</label>
+                <select id="unit_choice" name="unit_choice" required>
+                  <option value="">Select an available room...</option>
+                  <!-- Awtomatikong pupunuin ng JavaScript -->
+                </select>
+              </div>
+            </div>
+
+            <!-- GUARANTOR INFO -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guarantor_name">Guarantor Name</label>
+                <input type="text" id="guarantor_name" name="guarantor_name" placeholder="Pangalan ng guarantor" required>
+              </div>
+              <div class="form-group">
+                <label for="guarantor_phone">Guarantor Contact Number</label>
+                <input type="tel" id="guarantor_phone" name="guarantor_phone" placeholder="0917 123 4567" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="move_date">Target Move-in Date</label>
+              <input type="date" id="move_date" name="move_date" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message / Questions</label>
+              <textarea id="message" name="message" rows="3" placeholder="Any specific questions about the room? (e.g., Pakita ng loob, exact price, etc.)" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
+            <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 600; display: none;"></div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Rotche's House Rental. All rights reserved. | Kabayani St., Marikina City</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ========================================================
+       ANG "MAGIC SWITCH" - DITO MO LANG BABAGUHIN ANG STATUS AT PRICE
+       1 = Available (Bukas / Green)
+       0 = Occupied (Sarado / Red)
+    ======================================================== */
+    const rooms = [
+      { id: 1, price: 5000, floor: '1st Floor', status: 0 }, // Room 1
+      { id: 2, price: 4500, floor: '1st Floor', status: 0 }, // Room 2
+      { id: 3, price: 3500, floor: '1st Floor', status: 1 }, // Room 3 (Bakante)
+      { id: 4, price: 3500, floor: '1st Floor', status: 0 }, // Room 4
+      { id: 5, price: 5000, floor: '2nd Floor', status: 0 }, // Room 5
+      { id: 6, price: 4500, floor: '2nd Floor', status: 0 }, // Room 6
+      { id: 7, price: 3500, floor: '2nd Floor', status: 0 }, // Room 7
+      { id: 8, price: 3500, floor: '2nd Floor', status: 0 }  // Room 8
+    ];
+
+    /* --- HINDI MO NA KAILANGANG GALAWIN ANG MGA NASA BABA --- */
+
+    const roomsContainer = document.getElementById('rooms-container');
+    const roomDropdown = document.getElementById('unit_choice');
+    const heroAvailability = document.getElementById('hero-availability-text');
+    let availableRoomsList = [];
+
+    function formatPrice(price) {
+      return '₱' + price.toLocaleString();
+    }
+
+    function renderRooms() {
+      let htmlContent = '';
+      
+      rooms.forEach(room => {
+        const isAvailable = room.status === 1;
+        const priceStr = formatPrice(room.price);
+        
+        if (isAvailable) {
+          availableRoomsList.push({ id: room.id, price: room.price });
+
+          htmlContent += `
+            <div class="unit-card">
+              <div class="unit-img">
+                <img src="apartment-ext${room.id}.jpg" alt="Room ${room.id}">
+                <span class="unit-floor-badge">${room.floor}</span>
+                <span class="unit-price-badge">${priceStr} / month</span>
+                <span class="unit-status-badge status-available">Available</span>
+              </div>
+              <div class="unit-content">
+                <h3>Room ${room.id}</h3>
+                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> Kabayani St., Marikina</p>
+                <ul class="unit-features">
+                  <li><i class="fas fa-check"></i> Own CR</li>
+                  <li><i class="fas fa-check"></i> Own Sub-metered Water & Electric</li>
+                  <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
+                </ul>
+                <a href="#inquire" class="unit-btn">Check Availability</a>
+              </div>
+            </div>
+          `;
+        } else {
+          htmlContent += `
+            <div class="unit-card occupied">
+              <div class="unit-img">
+                <img src="apartment-ext${room.id}.jpg" alt="Room ${room.id}">
+                <span class="unit-floor-badge">${room.floor}</span>
+                <span class="unit-price-badge">${priceStr} / month</span>
+                <span class="unit-status-badge status-occupied">Occupied</span>
+              </div>
+              <div class="unit-content">
+                <h3>Room ${room.id}</h3>
+                <p class="unit-location"><i class="fas fa-map-marker-alt"></i> Kabayani St., Marikina</p>
+                <ul class="unit-features">
+                  <li><i class="fas fa-check"></i> Own CR</li>
+                  <li><i class="fas fa-check"></i> Own Sub-metered Water & Electric</li>
+                  <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
+                </ul>
+                <span class="unit-btn">Currently Occupied</span>
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      roomsContainer.innerHTML = htmlContent;
+
+      roomDropdown.innerHTML = '<option value="">Select an available room...</option>';
+      if (availableRoomsList.length > 0) {
+        availableRoomsList.forEach(room => {
+          let opt = document.createElement('option');
+          opt.value = `Room ${room.id} (${formatPrice(room.price)})`;
+          opt.textContent = `Room ${room.id} - ${formatPrice(room.price)}/month`;
+          roomDropdown.appendChild(opt);
+        });
+      } else {
+        roomDropdown.innerHTML = '<option value="">Walang bakanteng kwarto sa ngayon</option>';
+        roomDropdown.disabled = true;
+      }
+
+      if (availableRoomsList.length > 0) {
+        let roomNames = availableRoomsList.map(r => `Room ${r.id}`).join(', ');
+        heroAvailability.innerHTML = `<i class="fas fa-check-circle"></i> ${availableRoomsList.length} Room(s) Available Now (${roomNames})`;
+      } else {
+        heroAvailability.innerHTML = `<i class="fas fa-times-circle" style="color: var(--red);"></i> Fully Occupied`;
+      }
+    }
+
+    renderRooms();
+
+    /* HEADER SCROLL EFFECT */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    /* MOBILE MENU TOGGLE */
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+      });
+    });
+
+    /* DATE PICKER (Min date is Today) */
+    const dateInput = document.getElementById('move_date');
+    if (dateInput) {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      dateInput.min = `${yyyy}-${mm}-${dd}`;
+    }
+
+    /* FAQ ACCORDION */
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parentItem = btn.parentElement;
+        const isOpen = parentItem.classList.contains('open');
+        
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('open');
+        });
+
+        if (!isOpen) {
+          parentItem.classList.add('open');
+        }
+      });
+    });
+
+    /* AJAX FORM SUBMISSION */
+    const form = document.getElementById('rental-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        formStatus.style.display = 'none';
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            formStatus.style.display = 'block';
+            formStatus.style.color = '#2E7D4A';
+            formStatus.innerHTML = '✅ Inquiry sent successfully! I will contact you soon.';
+            form.reset();
+          } else {
+            formStatus.style.display = 'block';
+            formStatus.style.color = '#C43A2B';
+            formStatus.innerHTML = '❌ Something went wrong. Please try again or contact me directly.';
+          }
+        } catch (error) {
+          formStatus.style.display = 'block';
+          formStatus.style.color = '#C43A2B';
+          formStatus.innerHTML = '⚠️ Network error. Please check your internet connection.';
+        } finally {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
