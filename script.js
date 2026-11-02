@@ -37,7 +37,10 @@ function renderRooms() {
     if (isAvailable) availableRoomsList.push({ id: room.id, price: room.price });
 
     const priceStr     = formatPrice(room.price);
-    const roomLocation = room.location || 'Kabayani St., Marikina';
+    
+    // ✅ ADDRESS UPDATED HERE
+    const roomLocation = room.location || 'Ostrich St. (Kabayani Road), Marikina';
+    
     const roomDesc     = room.desc || 'Own CR';
     const shortTag     = room.desc.split('(')[0].trim();
 
