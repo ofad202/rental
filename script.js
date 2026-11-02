@@ -206,3 +206,22 @@ if (form) {
     }
   });
 }
+
+/* =========================================
+   CUSTOM MESSENGER WIDGET LOGIC
+   ========================================= */
+const messengerFab = document.getElementById('messengerFab');
+const messengerWidget = document.getElementById('messengerWidget');
+const messengerClose = document.getElementById('messengerClose');
+
+if (messengerFab && messengerWidget && messengerClose) {
+  // Open/Close widget when FAB is clicked
+  messengerFab.addEventListener('click', () => {
+    messengerWidget.classList.toggle('active');
+  });
+
+  // Close widget when X is clicked
+  messengerClose.addEventListener('click', () => {
+    messengerWidget.classList.remove('active');
+  });
+}
