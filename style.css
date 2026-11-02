@@ -18,25 +18,25 @@ ul { list-style: none; }
 
 /* NAV */
 header { 
-  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: var(--transition); padding: 25px 0; 
-  background: transparent; box-shadow: none; 
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; transition: var(--transition); padding: 15px 0; 
+  background: rgba(244, 239, 230, 0.95); /* Solid cream background from start */
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 10px rgba(0,0,0,0.08); 
 }
 
 header.scrolled { 
-  background: rgba(244, 239, 230, 0.95); 
-  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  padding: 15px 0; box-shadow: 0 1px 10px rgba(0,0,0,0.08); 
+  padding: 10px 0; 
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
 }
 
 .header-inner { display: flex; justify-content: space-between; align-items: center; }
 
-/* FIXED: Dark text from the start */
 .logo { font-family: var(--font-display); font-size: 1.8rem; font-weight: 600; color: var(--text-dark); font-style: italic; transition: var(--transition); }
 nav ul { display: flex; gap: 40px; align-items: center; }
 nav a { font-weight: 500; font-size: 0.85rem; color: var(--text-dark); transition: var(--transition); text-transform: uppercase; letter-spacing: 2px; }
 nav a:hover { color: var(--terracotta); }
 
-/* FIXED: Terracotta button to stand out against cream */
 .nav-btn { background: var(--terracotta); color: #fff; padding: 12px 28px; font-weight: 600; transition: var(--transition); border-radius: 50px; box-shadow: 0 4px 15px rgba(179, 105, 76, 0.2); }
 .nav-btn:hover { background: var(--text-dark); color: #fff; }
 
@@ -51,7 +51,8 @@ header.scrolled .menu-toggle { color: var(--text-dark); }
 
 /* CREATIVE HERO */
 .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--bg-cream); overflow: hidden; }
-.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 120px 10% 80px 10%; position: relative; z-index: 2; }
+/* Added padding-top here so the fixed header doesn't cover the text */
+.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 140px 10% 80px 10%; position: relative; z-index: 2; }
 .hero-text h1 { font-size: 5rem; margin-bottom: 30px; letter-spacing: -1px; }
 .hero-text h1 span { color: var(--terracotta); font-style: italic; }
 .hero-text p { font-size: 1.1rem; max-width: 450px; margin-bottom: 40px; }
