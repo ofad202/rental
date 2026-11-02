@@ -147,18 +147,20 @@ if (dateInput) {
   dateInput.min = `${yyyy}-${mm}-${dd}`;
 }
 
-/* FAQ ACCORDION */
+/* FAQ ACCORDION (SMOOTH ANIMATION) */
 const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(btn => {
   btn.addEventListener('click', () => {
     const parentItem = btn.parentElement;
     
+    // Close other open items smoothly
     document.querySelectorAll('.faq-item').forEach(item => {
-      if (item !== parentItem) {
+      if (item !== parentItem && item.classList.contains('active')) {
         item.classList.remove('active');
       }
     });
 
+    // Toggle the clicked item
     parentItem.classList.toggle('active');
   });
 });
