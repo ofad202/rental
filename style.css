@@ -17,7 +17,7 @@ ul { list-style: none; }
 .container { width: 95%; max-width: var(--container); margin: 0 auto; }
 
 /* ============================================
-   FLOATING PILL HEADER
+   FLOATING PILL HEADER (PawStay-inspired)
    ============================================ */
 header {
   position: fixed;
@@ -123,16 +123,16 @@ nav a:hover { color: var(--terracotta); }
 .hero-badge span { color: var(--terracotta); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-/* TRUST BAR (Spacious, No harsh lines) */
-.trust-bar { background: var(--bg-cream); padding: 50px 0; }
+/* TRUST BAR */
+.trust-bar { background: var(--bg-cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 30px 0; }
 .trust-inner { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; text-align: center; }
 .trust-item strong { display: block; font-family: var(--font-display); font-size: 2.5rem; color: var(--text-dark); line-height: 1; margin-bottom: 5px; }
 .trust-item span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; }
 
-/* SECTIONS (Restored white background for contrast) */
+/* SECTIONS */
 .section { padding: 120px 0; position: relative; }
-.section-light { background: #fff; } 
-.section-header { text-align: left; max-width: 800px; margin: 0 auto 60px; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 20px; }
+.section-light { background: #fff; }
+.section-header { text-align: left; max-width: 800px; margin: 0 auto 80px; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--border); padding-bottom: 30px; }
 .section-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--terracotta); margin-bottom: 10px; font-weight: 600; }
 .section-title { font-size: 3.5rem; }
 .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 400px; text-align: right; }
@@ -181,25 +181,23 @@ nav a:hover { color: var(--terracotta); }
   color: var(--text-muted); opacity: 0.7;
 }
 
-/* FAQS (Soft white cards on cream background) */
+/* FAQS (BULLETPROOF MAX-HEIGHT) */
 .faq-item { 
   transition: all 0.3s ease; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02); 
   background: #fff;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-  border: 1px solid transparent;
 }
 .faq-item:hover { 
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05); 
-  border-color: var(--border);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+  border-color: var(--terracotta); 
 }
 
 .faq-question {
-  width: 100%; text-align: left; padding: 25px; background: transparent; border: none;
+  width: 100%; text-align: left; padding: 25px; background: #fff; border: none;
   font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark);
   cursor: pointer; display: flex; justify-content: space-between; align-items: center;
   transition: color 0.3s ease;
+  border-radius: 12px;
 }
 .faq-question:hover { color: var(--terracotta); }
 .faq-question i { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: var(--terracotta); }
@@ -209,7 +207,7 @@ nav a:hover { color: var(--terracotta); }
   overflow: hidden;
   transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 25px;
-  background: transparent;
+  background: var(--bg-cream);
 }
 .faq-answer > p {
   font-size: 1rem;
@@ -221,8 +219,8 @@ nav a:hover { color: var(--terracotta); }
 
 .faq-item.active .faq-answer {
   max-height: 1000px; 
-  padding-top: 0;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 25px;
 }
 .faq-item.active .faq-question i { transform: rotate(45deg); }
 
@@ -289,10 +287,12 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   nav a { color: var(--text-dark) !important; }
   nav a:not(.nav-btn)::after { display: none; }
   .nav-btn { display: block; padding: 14px; text-align: center; }
+
+  /* Fix invisible nav-btn text on mobile */
   nav .nav-btn { color: #fff !important; }
 
   .trust-inner { flex-direction: column; gap: 30px; }
-  .section-header { margin-bottom: 40px; padding-bottom: 10px; gap: 16px; }
+  .section-header { margin-bottom: 50px; padding-bottom: 20px; gap: 16px; }
   .section-title { font-size: 2.2rem; line-height: 1.15; }
   .section-label { margin-bottom: 6px; }
   .section-desc { font-size: 0.95rem; line-height: 1.55; }
