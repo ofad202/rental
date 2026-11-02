@@ -27,11 +27,11 @@ header {
   z-index: 1000; 
   transition: var(--transition); 
   padding: 15px 40px; 
-  background: rgba(244, 239, 230, 0.85); /* Semi-transparent cream */
+  background: rgba(244, 239, 230, 0.85);
   backdrop-filter: blur(15px); 
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(179, 105, 76, 0.2); /* Subtle terracotta outline */
-  border-radius: 16px; /* Soft rounded corners, not a full pill */
+  border: 1px solid rgba(179, 105, 76, 0.2);
+  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
 }
 
@@ -124,61 +124,23 @@ nav a:hover { color: var(--terracotta); }
 .unit-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
 /* FAQS (SMOOTH ANIMATION) */
-.faq-item { 
-  transition: all 0.3s ease; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02); 
-}
-.faq-item:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  border-color: var(--terracotta);
-}
+.faq-item { transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+.faq-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-color: var(--terracotta); }
 
 .faq-question { 
-  width: 100%; 
-  text-align: left; 
-  padding: 25px; 
-  background: none; 
-  border: none; 
-  font-family: var(--font-body); 
-  font-size: 1.1rem; 
-  font-weight: 600; 
-  color: var(--text-dark); 
-  cursor: pointer; 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
+  width: 100%; text-align: left; padding: 25px; background: none; border: none; 
+  font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark); 
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
   transition: color 0.3s ease; 
 }
 .faq-question:hover { color: var(--terracotta); }
+.faq-question i { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: var(--terracotta); }
 
-.faq-question i { 
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-  color: var(--terracotta); 
-}
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 25px; background: var(--bg-cream); }
+.faq-answer p { font-size: 1rem; color: var(--text-muted); margin: 0; line-height: 1.6; padding-bottom: 15px; }
 
-.faq-answer { 
-  max-height: 0; 
-  overflow: hidden; 
-  transition: max-height 0.4s ease, padding 0.4s ease; 
-  padding: 0 25px; 
-  background: var(--bg-cream); 
-}
-.faq-answer p { 
-  font-size: 1rem; 
-  color: var(--text-muted); 
-  margin: 0; 
-  line-height: 1.6; 
-  padding-bottom: 15px;
-}
-
-.faq-item.active .faq-answer { 
-  max-height: 500px;
-  padding-top: 15px; 
-  padding-bottom: 25px; 
-}
-.faq-item.active .faq-question i { 
-  transform: rotate(45deg); 
-}
+.faq-item.active .faq-answer { max-height: 500px; padding-top: 15px; padding-bottom: 25px; }
+.faq-item.active .faq-question i { transform: rotate(45deg); }
 
 /* FORM */
 .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1300px; margin: 0 auto; align-items: center; }
@@ -240,4 +202,118 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   .section-title { font-size: 2.2rem; line-height: 1.15; }
   .section-label { margin-bottom: 6px; }
   .section-desc { font-size: 0.95rem; line-height: 1.55; }
+}
+
+/* =========================================
+   CUSTOM PAWSTAY-STYLE MESSENGER WIDGET
+   ========================================= */
+
+.messenger-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  background: #0084FF; /* Messenger Blue */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 132, 255, 0.4);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+.messenger-fab:hover {
+  transform: scale(1.1) rotate(10deg);
+  background: #0073e6;
+}
+
+.messenger-widget {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 340px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+  z-index: 9998;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(20px) scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.messenger-widget.active {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.messenger-header {
+  background: #0084FF;
+  color: #fff;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.messenger-profile { display: flex; align-items: center; gap: 12px; }
+
+.messenger-avatar {
+  width: 40px; height: 40px;
+  background: #fff;
+  color: #0084FF;
+  border-radius: 50%;
+  display: flex; justify-content: center; align-items: center;
+  font-size: 1.5rem;
+}
+
+.messenger-profile h4 { color: #fff; font-size: 1rem; margin: 0; font-family: var(--font-body); }
+.messenger-profile p { font-size: 0.75rem; margin: 0; display: flex; align-items: center; gap: 5px; }
+.online-dot { width: 8px; height: 8px; background: #4ADE80; border-radius: 50%; display: inline-block; }
+
+.messenger-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0.8; }
+.messenger-close:hover { opacity: 1; }
+
+.messenger-body { padding: 20px; background: #F4EFE6; min-height: 100px; }
+
+.messenger-bubble {
+  background: #fff;
+  padding: 15px;
+  border-radius: 0 16px 16px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.messenger-footer { padding: 15px; background: #fff; }
+
+.messenger-start-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: #0084FF;
+  color: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.3s ease;
+}
+
+.messenger-start-btn:hover { background: #0073e6; }
+
+@media (max-width: 480px) {
+  .messenger-widget { width: calc(100% - 40px); right: 20px; bottom: 100px; }
+  .messenger-fab { bottom: 20px; right: 20px; }
 }
