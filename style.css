@@ -181,37 +181,44 @@ nav a:hover { color: var(--terracotta); }
   color: var(--text-muted); opacity: 0.7;
 }
 
-/* FAQS (GRID TECHNIQUE — NO CLIPPING / NO LEAKING) */
-.faq-item { transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-.faq-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-color: var(--terracotta); }
+/* FAQS (BULLETPROOF MAX-HEIGHT) */
+.faq-item { 
+  transition: all 0.3s ease; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02); 
+  background: #fff;
+}
+.faq-item:hover { 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+  border-color: var(--terracotta); 
+}
 
 .faq-question {
-  width: 100%; text-align: left; padding: 25px; background: none; border: none;
+  width: 100%; text-align: left; padding: 25px; background: #fff; border: none;
   font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark);
   cursor: pointer; display: flex; justify-content: space-between; align-items: center;
   transition: color 0.3s ease;
+  border-radius: 12px;
 }
 .faq-question:hover { color: var(--terracotta); }
 .faq-question i { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: var(--terracotta); }
 
 .faq-answer {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.4s ease, padding 0.4s ease;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
   padding: 0 25px;
   background: var(--bg-cream);
-  overflow: hidden; /* ✅ Ensures no text bleeds when closed */
 }
 .faq-answer > p {
-  overflow: hidden;
   font-size: 1rem;
   color: var(--text-muted);
   margin: 0;
   line-height: 1.6;
   padding-bottom: 15px;
 }
+
 .faq-item.active .faq-answer {
-  grid-template-rows: 1fr;
+  max-height: 1000px; 
   padding-top: 15px;
   padding-bottom: 25px;
 }
