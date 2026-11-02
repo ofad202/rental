@@ -43,11 +43,11 @@ function renderRooms() {
 
     htmlContent += `
       <div class="unit-card${isAvailable ? '' : ' occupied'}">
-        <div class="unit-img">
+        <div class="unit-img" aria-label="Unit ${room.id} photo">
           <img src="room${room.id}.jpg"
                alt="Unit ${room.id}"
                loading="lazy"
-               onerror="this.style.display='none'; this.parentElement.classList.add('img-missing');">
+               onerror="this.remove(); this.parentElement.classList.add('img-missing');">
           <span class="unit-floor-badge">${room.floor}</span>
           <span class="unit-status-badge ${isAvailable ? 'status-available' : 'status-occupied'}">
             ${isAvailable ? 'Available' : 'Occupied'}
@@ -180,6 +180,14 @@ const formStatus = document.getElementById('formStatus');
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Guard: no rooms available
+    if (roomDropdown.disabled) {
+      formStatus.style.display = 'block';
+      formStatus.style.color = '#C43A2B';
+      formStatus.innerHTML = 'No vacant units at the moment. Please check back later.';
+      return;
+    }
 
     const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = 'Sending...';
