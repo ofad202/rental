@@ -29,7 +29,7 @@ function formatPrice(price) {
 
 /* ---------- RENDER UNITS + DROPDOWN + HERO ---------- */
 function renderRooms() {
-  availableRoomsList = [];   // ✅ reset every render — no duplicates
+  availableRoomsList = [];   // reset every render — no duplicates
   let htmlContent = '';
 
   rooms.forEach(room => {
@@ -109,7 +109,7 @@ function renderRooms() {
 
 renderRooms();
 
-/* ---------- HEADER SCROLL EFFECT (debounced via rAF) ---------- */
+/* ---------- HEADER SCROLL EFFECT (rAF-debounced) ---------- */
 const header = document.getElementById('header');
 let scrollTicking = false;
 window.addEventListener('scroll', () => {
@@ -144,7 +144,7 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
-/* ---------- DATE PICKER (Min = today, local time) ---------- */
+/* ---------- DATE PICKER (min = today) ---------- */
 const dateInput = document.getElementById('move_date');
 if (dateInput) {
   const today = new Date();
@@ -193,7 +193,6 @@ if (form) {
         headers: { 'Accept': 'application/json' }
       });
 
-      // Formspree returns JSON whether success or error
       const data = await response.json().catch(() => ({}));
 
       if (response.ok && !data.errors) {
