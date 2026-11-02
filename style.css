@@ -4,7 +4,7 @@
   --terracotta: #B3694C; --terracotta-hover: #94553C; --border: #E0DCD3;
   --green: #2E7D4A; --red: #C43A2B;
   --font-body: 'Jost', sans-serif; --font-display: 'Playfair Display', serif;
-  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --container: 1600px;
 }
 html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 110px; }
@@ -17,29 +17,29 @@ ul { list-style: none; }
 .container { width: 95%; max-width: var(--container); margin: 0 auto; }
 
 /* SEMI-FLOATING PROFESSIONAL NAV */
-header { 
-  position: fixed; 
-  top: 20px; 
+header {
+  position: fixed;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
   max-width: var(--container);
-  z-index: 1000; 
-  transition: var(--transition); 
-  padding: 15px 40px; 
-  background: rgba(244, 239, 230, 0.85); /* Semi-transparent cream */
-  backdrop-filter: blur(15px); 
+  z-index: 1000;
+  transition: var(--transition);
+  padding: 15px 40px;
+  background: rgba(244, 239, 230, 0.85);
+  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(179, 105, 76, 0.2); /* Subtle terracotta outline */
-  border-radius: 16px; /* Soft rounded corners */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+  border: 1px solid rgba(179, 105, 76, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-header.scrolled { 
+header.scrolled {
   top: 10px;
-  padding: 10px 40px; 
-  background: rgba(244, 239, 230, 0.95); 
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+  padding: 10px 40px;
+  background: rgba(244, 239, 230, 0.95);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
   border-color: rgba(179, 105, 76, 0.4);
 }
 
@@ -95,7 +95,8 @@ nav a:hover { color: var(--terracotta); }
 .units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
 .unit-card { background: #fff; transition: var(--transition); display: flex; flex-direction: column; position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.03); }
 .unit-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.08); }
-.unit-card.occupied { opacity: 0.6; pointer-events: none; filter: grayscale(100%); }
+.unit-card.occupied { opacity: 0.6; filter: grayscale(100%); }
+.unit-card.occupied .unit-btn { pointer-events: none; cursor: not-allowed; }
 
 .unit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--terracotta); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--transition); z-index: 10; }
 .unit-card:hover::before { transform: scaleX(1); }
@@ -123,23 +124,58 @@ nav a:hover { color: var(--terracotta); }
 .unit-btn { display: block; text-align: center; background: transparent; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; padding: 18px; border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 2px; transition: var(--transition); border-radius: 50px; margin-top: auto; }
 .unit-btn:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
 
-/* FAQS (SMOOTH ANIMATION) */
+/* IMAGE FALLBACK — neutral cream block when roomN.jpg is missing */
+.unit-img.img-missing {
+  background: linear-gradient(135deg, #E8E1D5 0%, #D9D0C0 100%);
+}
+.unit-img.img-missing::after {
+  content: 'Photo coming soon';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* FAQS (SMOOTH ANIMATION — GRID TECHNIQUE, NO CLIPPING) */
 .faq-item { transition: all 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
 .faq-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-color: var(--terracotta); }
 
-.faq-question { 
-  width: 100%; text-align: left; padding: 25px; background: none; border: none; 
-  font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark); 
-  cursor: pointer; display: flex; justify-content: space-between; align-items: center; 
-  transition: color 0.3s ease; 
+.faq-question {
+  width: 100%; text-align: left; padding: 25px; background: none; border: none;
+  font-family: var(--font-body); font-size: 1.1rem; font-weight: 600; color: var(--text-dark);
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  transition: color 0.3s ease;
 }
 .faq-question:hover { color: var(--terracotta); }
 .faq-question i { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); color: var(--terracotta); }
 
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 25px; background: var(--bg-cream); }
-.faq-answer p { font-size: 1rem; color: var(--text-muted); margin: 0; line-height: 1.6; padding-bottom: 15px; }
-
-.faq-item.active .faq-answer { max-height: 500px; padding-top: 15px; padding-bottom: 25px; }
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease, padding 0.4s ease;
+  padding: 0 25px;
+  background: var(--bg-cream);
+}
+.faq-answer > p {
+  overflow: hidden;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.6;
+  padding-bottom: 15px;
+}
+.faq-item.active .faq-answer {
+  grid-template-rows: 1fr;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
 .faq-item.active .faq-question i { transform: rotate(45deg); }
 
 /* FORM */
@@ -188,7 +224,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   .hero-badge { flex-direction: column; align-items: flex-start; gap: 2px; padding: 15px 20px; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 40px 20px; }
-  
+
   /* Mobile Header Adjustments */
   header { top: 10px; width: 92%; padding: 12px 20px; border-radius: 12px; }
   .menu-toggle { display: block; }
@@ -196,7 +232,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   nav.active { display: block; }
   nav ul { flex-direction: column; gap: 20px; align-items: stretch; text-align: center; }
   nav a { color: var(--text-dark) !important; text-shadow: none !important; }
-  
+
   .trust-inner { flex-direction: column; gap: 30px; }
   .section-header { margin-bottom: 50px; padding-bottom: 20px; gap: 16px; }
   .section-title { font-size: 2.2rem; line-height: 1.15; }
