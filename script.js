@@ -1,5 +1,5 @@
 /* ========================================================
-   ROTCHE'S RESIDENCES — MAIN SCRIPT
+   ROTCHE'S ROOM 4 RENT — MAIN SCRIPT
    1 = Available (Bukas)
    0 = Occupied (Sarado)
 ======================================================== */
