@@ -59,11 +59,12 @@ nav a:hover { color: var(--terracotta); }
 .hero-badge span { color: var(--terracotta); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-/* TRUST BAR */
+/* TRUST BAR (UPDATED TO LEFT ALIGNMENT) */
 .trust-bar { background: var(--bg-cream); padding: 40px 0; }
-.trust-inner { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; text-align: center; }
-.trust-item strong { display: block; font-family: var(--font-display); font-size: 2.5rem; color: var(--text-dark); line-height: 1; margin-bottom: 5px; }
-.trust-item span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; }
+.trust-inner { display: flex; justify-content: flex-start; gap: 60px; flex-wrap: wrap; text-align: left; max-width: 1300px; margin: 0 auto; padding-left: 5%; }
+.trust-item { display: flex; align-items: center; gap: 15px; }
+.trust-item strong { font-family: var(--font-display); font-size: 2.5rem; color: var(--text-dark); line-height: 1; margin-bottom: 0; }
+.trust-item span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; max-width: 120px; line-height: 1.2; }
 
 /* SECTIONS */
 .section { padding: 80px 0; position: relative; }
@@ -169,7 +170,12 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   .hero-btn { margin: 0 auto; }
   .hero-image { height: 60vh; }
   .hero-badge { bottom: 20px; left: 20px; padding: 10px 20px; font-size: 1rem; }
-  .trust-inner { gap: 40px; }
+  
+  /* Tablet fix for trust bar */
+  .trust-inner { gap: 40px; padding-left: 0; justify-content: center; }
+  .trust-item { flex-direction: column; text-align: center; gap: 5px; }
+  .trust-item span { max-width: 100%; }
+
   .contact-wrapper { grid-template-columns: 1fr; }
   .contact-info { padding: 0; text-align: center; }
   .contact-item { justify-content: center; }
@@ -194,7 +200,10 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   nav a:not(.nav-btn)::after { display: none; }
   .nav-btn { display: block; padding: 14px; text-align: center; }
   nav .nav-btn { color: #fff !important; }
-  .trust-inner { flex-direction: column; gap: 30px; }
+  
+  .trust-inner { flex-direction: column; gap: 30px; align-items: flex-start; padding-left: 5%; }
+  .trust-item { flex-direction: row; text-align: left; }
+  
   .section-header { margin-bottom: 30px; padding-bottom: 10px; gap: 16px; }
   .section-title { font-size: 2.2rem; line-height: 1.15; }
   .section-label { margin-bottom: 6px; }
