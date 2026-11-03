@@ -4,7 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Affordable rooms for rent in Marikina. Own water & electric connections. Rotche's Room 4 Rent.">
+  
+  <!-- Open Graph Tags for Facebook Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marikinaroom4rent.vercel.app/">
+  <meta property="og:title" content="Rotche's Room 4 Rent | Marikina">
+  <meta property="og:description" content="Affordable and secure rooms for rent in Marikina City. Own water and electric meters. Inquire online today!">
+  <meta property="og:image" content="https://marikinaroom4rent.vercel.app/hero.jpg">
+
   <title>Rotche's Room 4 Rent | Marikina</title>
+
+  <!-- Favicon (Put a favicon.png in your folder) -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +44,6 @@
     </div>
   </header>
 
-  <!-- NEW LAYOUT: EDITORIAL HERO -->
   <section class="hero" id="home">
     <div class="hero-text">
       <span class="section-label">Quality Living in Marikina</span>
@@ -42,8 +52,7 @@
       <a href="#units" class="hero-btn">View Available Units</a>
       <div class="hero-availability" id="hero-availability-text"></div>
     </div>
-    <div class="hero-image-wrapper">
-      <div class="hero-image"></div>
+    <div class="hero-image">
       <div class="hero-badge" id="heroBadge">
         <span>Starting / month</span>
       </div>
@@ -67,6 +76,7 @@
     </div>
   </section>
 
+  <!-- SECTION 1: CREAM BACKGROUND -->
   <section class="section" id="units">
     <div class="container">
       <div class="section-header">
@@ -80,6 +90,7 @@
     </div>
   </section>
 
+  <!-- SECTION 2: WHITE BACKGROUND -->
   <section class="section section-light" id="amenities">
     <div class="container">
       <div class="section-header">
@@ -99,7 +110,7 @@
         <div class="feature-box">
           <div class="feature-icon"><i class="fas fa-bolt"></i></div>
           <h4>Own Utility Connections</h4>
-          <p>Each unit has its own direct water and electric connection. Transparent billing.</p>
+          <p>Each unit has its own direct water and electric connection. Transparent billing, you pay exactly what you consume.</p>
         </div>
         <div class="feature-box">
           <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
@@ -114,7 +125,7 @@
           <li><strong>Strictly No Smoking:</strong> Smoking is prohibited inside the units and within the compound.</li>
           <li><strong>No Illegal Activities:</strong> Illegal drugs, gambling, and any unlawful activities are strictly prohibited.</li>
           <li><strong>No Pets Allowed:</strong> Pets are not permitted inside the units or within the compound premises.</li>
-          <li><strong>Quiet Hours & Peace:</strong> Please observe silence from <strong>10:00 PM to 7:00 AM</strong>.</li>
+          <li><strong>Quiet Hours & Peace:</strong> Please observe silence from <strong>10:00 PM to 7:00 AM</strong>. No loud music, videoke, or loitering outside the units.</li>
           <li><strong>No Subleasing / Bed-spacing:</strong> Tenants are not allowed to sublease the unit without the landlord's written consent.</li>
           <li><strong>Visitor Policy:</strong> You must inform the landlord beforehand if you have overnight visitors.</li>
           <li><strong>Street Parking Only:</strong> No private parking space. Park at your own risk.</li>
@@ -123,6 +134,7 @@
     </div>
   </section>
 
+  <!-- SECTION 3: CREAM BACKGROUND -->
   <section class="section" id="faq">
     <div class="container">
       <div class="section-header">
@@ -136,7 +148,7 @@
       <div class="faq-grid">
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How much is the rent and what's included? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Rent ranges from ₱4,500 to ₱13,000. The ₱4,500 units are all-in-one rooms (CR and kitchen inside). The ₱5,500 units are more spacious with a separate CR, kitchen, and a large sink. Units 1 & 5 are spacious 2-door units (₱6,000), and Unit 9 is a 2-storey house with a rooftop (₱13,000).</p></div>
+          <div class="faq-answer"><p>Rent ranges from ₱4,500 to ₱13,000. The ₱4,500 units are all-in-one rooms (CR and kitchen inside). The ₱5,500 units are more spacious with a separate CR, kitchen, and a large sink. Units 1 & 5 are spacious 2-door units (₱6,000), and Unit 9 is a 2-storey house with a rooftop (₱13,000). Electricity and water are not included as each unit has its own direct connection.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">What are the requirements to move in? <i class="fas fa-plus"></i></button>
@@ -148,7 +160,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">Who handles repairs and maintenance? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Major structural repairs (roof leaks, main plumbing) are handled by the landlord. Tenants are responsible for minor upkeep.</p></div>
+          <div class="faq-answer"><p>Major structural repairs (roof leaks, main plumbing) are handled by the landlord. Tenants are responsible for minor upkeep and any damage caused by their own negligence.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How many units are available and where are they located? <i class="fas fa-plus"></i></button>
@@ -162,6 +174,7 @@
     </div>
   </section>
 
+  <!-- SECTION 4: WHITE BACKGROUND -->
   <section class="section section-light" id="inquire">
     <div class="container">
       <div class="contact-wrapper">
@@ -207,17 +220,18 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="phone">Mobile Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" autocomplete="tel" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="tenant_fb">Your Facebook Profile Link</label>
                 <input type="text" id="tenant_fb" name="tenant_fb" placeholder="https://facebook.com/your.profile" required>
+                <small style="display: block; margin-top: 5px; color: var(--text-muted); font-size: 0.75rem;">Note: A valid government ID will be required upon move-in.</small>
               </div>
               <div class="form-group">
                 <label for="source_income">Source of Income</label>
@@ -235,6 +249,8 @@
                   <option value="4 or more">4 or more</option>
                 </select>
               </div>
+              
+              <!-- THE NEW AUTO-FILL UNIT SELECTION -->
               <div class="form-group">
                 <label>Preferred Unit</label>
                 <div id="selected_unit_display" style="padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 500; color: var(--text-muted); font-size: 15px;">
@@ -259,7 +275,7 @@
             </div>
             <div class="form-group">
               <label for="message">Message / Questions</label>
-              <textarea id="message" name="message" rows="2" placeholder="Any specific questions?"></textarea>
+              <textarea id="message" name="message" rows="3" placeholder="Any specific questions about the unit?"></textarea>
             </div>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
@@ -276,7 +292,8 @@
     </div>
   </footer>
 
-  <button id="scrollTop" style="position: fixed; bottom: 30px; right: 30px; background: var(--maroon); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;">
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollTop" style="position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;">
     <i class="fas fa-arrow-up"></i>
   </button>
 
