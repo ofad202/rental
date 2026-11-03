@@ -14,7 +14,7 @@
 
   <title>Rotche's Room 4 Rent | Marikina</title>
 
-  <!-- Favicon (Put a favicon.png in your folder) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,10 @@
 
   <header id="header">
     <div class="container header-inner">
-      <a href="#home" class="logo">Rotche's Room 4 Rent</a>
+      
+      <!-- UPDATED LOGO with Terracotta "4" -->
+      <a href="#home" class="logo">Rotche's Room <span class="logo-highlight">4</span> Rent</a>
+      
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
@@ -50,7 +53,12 @@
       <h1>Affordable Rooms <br>for <span>Rent.</span></h1>
       <p>Located in Marikina City. Perfect for working professionals, students, and small families. Choose from our 9 well-maintained units.</p>
       <a href="#units" class="hero-btn">View Available Units</a>
-      <div class="hero-availability" id="hero-availability-text"></div>
+      
+      <!-- UPDATED GREEN DOT AVAILABILITY CONTAINER -->
+      <div class="hero-availability" id="hero-availability-text">
+        <!-- The Javascript will inject the text and green dot here -->
+      </div>
+      
     </div>
     <div class="hero-image">
       <div class="hero-badge" id="heroBadge">
@@ -76,7 +84,6 @@
     </div>
   </section>
 
-  <!-- SECTION 1: CREAM BACKGROUND -->
   <section class="section" id="units">
     <div class="container">
       <div class="section-header">
@@ -86,11 +93,11 @@
         </div>
         <p class="section-desc">We have 9 units available across our properties. Every unit has its own direct water and electric connection.</p>
       </div>
+      <!-- Javascript generates the cards here -->
       <div class="units-grid" id="rooms-container"></div>
     </div>
   </section>
 
-  <!-- SECTION 2: WHITE BACKGROUND -->
   <section class="section section-light" id="amenities">
     <div class="container">
       <div class="section-header">
@@ -134,7 +141,6 @@
     </div>
   </section>
 
-  <!-- SECTION 3: CREAM BACKGROUND -->
   <section class="section" id="faq">
     <div class="container">
       <div class="section-header">
@@ -174,7 +180,6 @@
     </div>
   </section>
 
-  <!-- SECTION 4: WHITE BACKGROUND -->
   <section class="section section-light" id="inquire">
     <div class="container">
       <div class="contact-wrapper">
@@ -250,7 +255,6 @@
                 </select>
               </div>
               
-              <!-- THE NEW AUTO-FILL UNIT SELECTION -->
               <div class="form-group">
                 <label>Preferred Unit</label>
                 <div id="selected_unit_display" style="padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 500; color: var(--text-muted); font-size: 15px;">
@@ -292,7 +296,6 @@
     </div>
   </footer>
 
-  <!-- SCROLL TO TOP BUTTON -->
   <button id="scrollTop" style="position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;">
     <i class="fas fa-arrow-up"></i>
   </button>
