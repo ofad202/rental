@@ -7,7 +7,7 @@
   --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --container: 1600px;
 }
-html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 120px; }
+html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 100px; }
 body { font-family: var(--font-body); color: var(--text-muted); background-color: var(--bg-cream); line-height: 1.6; overflow-x: hidden; width: 100%; }
 h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-dark); line-height: 1.1; }
 a { text-decoration: none; color: inherit; }
@@ -16,19 +16,38 @@ ul { list-style: none; }
 
 .container { width: 95%; max-width: var(--container); margin: 0 auto; }
 
-/* HEADER */
+/* =========================================
+   HEADER - Full Width & Clean (No more pill)
+   ========================================= */
 header {
-  position: fixed; top: 24px; left: 50%; transform: translateX(-50%);
-  width: 92%; max-width: 1400px; z-index: 1000;
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 14px 32px; background: rgba(244, 239, 230, 0.72);
-  backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 999px; box-shadow: 0 8px 32px rgba(26, 26, 26, 0.06);
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s ease;
+  padding: 25px 0; 
+  background: rgba(244, 239, 230, 0.85);
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid transparent;
 }
-header.scrolled { top: 14px; padding: 10px 28px; background: rgba(244, 239, 230, 0.96); box-shadow: 0 12px 40px rgba(26, 26, 26, 0.10); width: 88%; }
-.header-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+header.scrolled { 
+  padding: 15px 0; 
+  background: rgba(244, 239, 230, 0.98);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+.header-inner { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 95%; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+}
 
-.logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--text-dark); font-style: italic; transition: var(--transition); white-space: nowrap; }
+.logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--text-dark); font-style: italic; transition: var(--transition); white-space: nowrap; }
 .logo:hover { color: var(--terracotta); }
 
 nav ul { display: flex; gap: 32px; align-items: center; }
@@ -37,14 +56,14 @@ nav a:not(.nav-btn)::after { content: ''; position: absolute; bottom: -4px; left
 nav a:not(.nav-btn):hover::after { width: 100%; }
 nav a:hover { color: var(--terracotta); }
 
-.nav-btn { background: var(--text-dark); color: #fff; padding: 11px 26px; font-weight: 500; font-size: 0.8rem; transition: var(--transition); border-radius: 999px; letter-spacing: 1.5px; }
+.nav-btn { background: var(--text-dark); color: #fff; padding: 11px 26px; font-weight: 500; font-size: 0.8rem; transition: var(--transition); border-radius: 50px; letter-spacing: 1.5px; }
 .nav-btn:hover { background: var(--terracotta); color: #fff; transform: translateY(-1px); }
 
 .menu-toggle { display: none; background: none; border: none; font-size: 1.4rem; color: var(--text-dark); cursor: pointer; transition: var(--transition); padding: 6px; }
 
 /* HERO */
-.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--bg-cream); overflow: hidden; }
-.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 160px 10% 80px 10%; position: relative; z-index: 2; }
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; background: var(--bg-cream); overflow: hidden; padding-top: 80px; }
+.hero-text { display: flex; flex-direction: column; justify-content: center; padding: 80px 10% 80px 10%; position: relative; z-index: 2; }
 .hero-text h1 { font-size: 5rem; margin-bottom: 30px; letter-spacing: -1px; }
 .hero-text h1 span { color: var(--terracotta); font-style: italic; }
 .hero-text p { font-size: 1.1rem; max-width: 450px; margin-bottom: 40px; }
@@ -59,14 +78,16 @@ nav a:hover { color: var(--terracotta); }
 .hero-badge span { color: var(--terracotta); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
-/* TRUST BAR (Aligned Left with Container) */
-.trust-bar { background: var(--bg-cream); padding: 40px 0; }
+/* =========================================
+   TRUST BAR - Perfectly Aligned Left
+   ========================================= */
+.trust-bar { background: var(--bg-cream); padding: 40px 0; border-bottom: 1px solid var(--border); }
 .trust-inner { 
   display: flex; 
   justify-content: flex-start; 
   gap: 80px; 
   width: 95%; 
-  max-width: var(--container); 
+  max-width: 1400px; 
   margin: 0 auto; 
   text-align: left; 
 }
@@ -75,9 +96,9 @@ nav a:hover { color: var(--terracotta); }
 .trust-item span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; max-width: 120px; line-height: 1.2; }
 
 /* SECTIONS */
-.section { padding: 80px 0; position: relative; }
+.section { padding: 100px 0; position: relative; }
 .section-light { background: #fff; }
-.section-header { text-align: left; max-width: 800px; margin: 0 auto 40px; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 10px; }
+.section-header { text-align: left; max-width: 800px; margin: 0 auto 60px; display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
 .section-label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--terracotta); margin-bottom: 10px; font-weight: 600; }
 .section-title { font-size: 3.5rem; }
 .section-desc { color: var(--text-muted); font-size: 1.05rem; max-width: 400px; text-align: right; }
@@ -172,8 +193,8 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .units-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-text { padding: 160px 5% 60px; text-align: center; }
+  .hero { grid-template-columns: 1fr; padding-top: 60px; }
+  .hero-text { padding: 60px 5%; text-align: center; }
   .hero-text p { margin-left: auto; margin-right: auto; }
   .hero-btn { margin: 0 auto; }
   .hero-image { height: 60vh; }
@@ -192,17 +213,21 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   .hero-badge { flex-direction: column; align-items: flex-start; gap: 2px; padding: 15px 20px; }
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 40px 20px; }
-  header { top: 10px; width: 94%; padding: 12px 20px; border-radius: 999px; }
-  header.scrolled { width: 92%; padding: 10px 18px; }
-  .logo { font-size: 1.2rem; }
+  
+  header { padding: 15px 0; }
+  .header-inner { width: 92%; }
+  .logo { font-size: 1.3rem; }
   .menu-toggle { display: block; }
-  nav { position: absolute; top: calc(100% + 12px); left: 0; width: 100%; background: #fff; padding: 24px; border-radius: 20px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+  
+  /* Mobile Navigation Dropdown */
+  nav { position: absolute; top: 100%; left: 0; width: 100%; background: #fff; padding: 20px; display: none; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-bottom: 1px solid var(--border); }
   nav.active { display: block; }
-  nav ul { flex-direction: column; gap: 18px; align-items: stretch; text-align: center; }
+  nav ul { flex-direction: column; gap: 20px; align-items: stretch; text-align: center; }
   nav a { color: var(--text-dark) !important; }
   nav a:not(.nav-btn)::after { display: none; }
   .nav-btn { display: block; padding: 14px; text-align: center; }
   nav .nav-btn { color: #fff !important; }
+  
   .trust-inner { flex-direction: column; gap: 30px; align-items: flex-start; }
   .section-header { margin-bottom: 30px; padding-bottom: 10px; gap: 16px; }
   .section-title { font-size: 2.2rem; line-height: 1.15; }
