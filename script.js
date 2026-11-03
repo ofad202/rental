@@ -77,12 +77,17 @@ function renderRooms() {
     roomsContainer.innerHTML = htmlContent;
   }
 
-  /* Hero availability text */
+  /* Hero availability text - Uses the CSS Green Dot */
   if (availableRoomsList.length > 0) {
     const roomNames = availableRoomsList.map(r => `Unit ${r.id}`).join(', ');
-    heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--green); vertical-align: middle; margin-right: 5px;"></i> ${availableRoomsList.length} Unit(s) Available (${roomNames})`;
+    
+    // This injects the text inside the span that has the pulsing green dot
+    heroAvailability.innerHTML = `
+      <span class="availability-indicator">${availableRoomsList.length} Unit(s) Available (${roomNames})</span>
+    `;
   } else {
-    heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--red); vertical-align: middle; margin-right: 5px;"></i> Fully Occupied`;
+    // Fully occupied state
+    heroAvailability.innerHTML = `<span style="color: var(--status-red); font-weight: 600;">Fully Occupied</span>`;
   }
 
   /* Hero badge price */
@@ -98,7 +103,7 @@ function selectUnit(id, price) {
   const hiddenInput = document.getElementById('unit_choice');
   
   // Update visual display
-  display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--green);"></i> Unit ${id} (${price}/month)`;
+  display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--status-green);"></i> Unit ${id} (${price}/month)`;
   display.style.borderColor = 'var(--terracotta)';
   display.style.background = 'var(--bg-cream)';
   display.style.color = 'var(--text-dark)';
@@ -191,7 +196,7 @@ if (form) {
     const unitChoice = document.getElementById('unit_choice').value;
     if (!unitChoice) {
       formStatus.style.display = 'block';
-      formStatus.style.color = '#C43A2B';
+      formStatus.style.color = 'var(--status-red)';
       formStatus.innerHTML = 'Please select an available unit from the cards above first.';
       window.scrollTo({ top: document.getElementById('units').offsetTop, behavior: 'smooth' });
       return;
@@ -213,7 +218,7 @@ if (form) {
 
       if (response.ok && !data.errors) {
         formStatus.style.display = 'block';
-        formStatus.style.color = '#2E7D4A';
+        formStatus.style.color = 'var(--status-green)';
         formStatus.innerHTML = 'Inquiry sent successfully. We will contact you soon.';
         form.reset();
         
@@ -229,12 +234,12 @@ if (form) {
           ? data.errors.map(err => err.message || err.field).join(', ')
           : 'Something went wrong. Please try again.';
         formStatus.style.display = 'block';
-        formStatus.style.color = '#C43A2B';
+        formStatus.style.color = 'var(--status-red)';
         formStatus.innerHTML = msg;
       }
     } catch (error) {
       formStatus.style.display = 'block';
-      formStatus.style.color = '#C43A2B';
+      formStatus.style.color = 'var(--status-red)';
       formStatus.innerHTML = 'Network error. Please check your connection.';
     } finally {
       submitBtn.innerHTML = originalText;
