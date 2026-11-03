@@ -75,15 +75,15 @@ nav a:hover { color: var(--terracotta); }
 .trust-item strong { font-family: var(--font-display); font-size: 2.5rem; color: var(--text-dark); line-height: 1; margin-bottom: 0; }
 .trust-item span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); font-weight: 500; max-width: 130px; line-height: 1.2; }
 
-/* SECTIONS (Tightened Padding) */
-.section { padding: 50px 0; position: relative; }
+/* SECTIONS (Tightened Gap) */
+.section { padding: 60px 0; position: relative; }
 .section-light { background: #fff; }
 
-/* SECTION HEADERS (Centered & Closer to Content) */
+/* SECTION HEADERS (Perfect Centered Stack) */
 .section-header { 
   text-align: center; 
   max-width: 800px; 
-  margin: 0 auto 30px; /* Reduced to pull cards closer */
+  margin: 0 auto 20px; /* Pulls the cards up close to the text */
   display: flex; 
   flex-direction: column; 
   align-items: center; 
@@ -126,7 +126,7 @@ nav a:hover { color: var(--terracotta); }
 .unit-img.img-missing { background: linear-gradient(135deg, #E8E1D5 0%, #D9D0C0 100%); }
 .unit-img.img-missing::after { content: 'Photo coming soon'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); opacity: 0.7; }
 
-/* AMENITIES & RULES (Tightened) */
+/* AMENITIES & RULES */
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 40px; }
 .feature-box { padding: 40px; background: var(--bg-cream); border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
 .feature-icon { width: 80px; height: 80px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; }
@@ -212,7 +212,7 @@ footer { background: var(--text-dark); color: rgba(255,255,255,0.5); padding: 40
   .nav-btn { display: block; padding: 14px; text-align: center; }
   nav .nav-btn { color: #fff !important; }
   .trust-inner { flex-direction: column; gap: 30px; align-items: flex-start; }
-  .section-header { margin-bottom: 20px; gap: 10px; }
+  .section-header { margin-bottom: 25px; padding-bottom: 10px; }
   .section-title { font-size: 2.2rem; line-height: 1.15; }
   .section-label { margin-bottom: 6px; }
   .section-desc { font-size: 0.95rem; line-height: 1.55; }
