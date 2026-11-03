@@ -4,7 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Affordable rooms for rent in Marikina. Own water & electric connections. Rotche's Room 4 Rent.">
+  
+  <!-- Open Graph Tags for Facebook Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://marikinaroom4rent.vercel.app/">
+  <meta property="og:title" content="Rotche's Room 4 Rent | Marikina">
+  <meta property="og:description" content="Affordable and secure rooms for rent in Marikina City. Own water and electric meters. Inquire online today!">
+  <meta property="og:image" content="https://marikinaroom4rent.vercel.app/hero.jpg">
+
   <title>Rotche's Room 4 Rent | Marikina</title>
+
+  <!-- Favicon (Put a favicon.png in your folder) -->
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,23 +103,17 @@
 
       <div class="features-grid">
         <div class="feature-box">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
           <h4>Safe & Secure</h4>
           <p>Gated compound with a responsive landlord. Safe for solo living or small families.</p>
         </div>
         <div class="feature-box">
-          <div class="feature-icon">
-            <i class="fas fa-bolt"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
           <h4>Own Utility Connections</h4>
           <p>Each unit has its own direct water and electric connection. Transparent billing, you pay exactly what you consume.</p>
         </div>
         <div class="feature-box">
-          <div class="feature-icon">
-            <i class="fas fa-map-marker-alt"></i>
-          </div>
+          <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
           <h4>Accessible Location</h4>
           <p>Close to the market, public transport, and stores. Easy for guests to find.</p>
         </div>
@@ -120,10 +125,10 @@
           <li><strong>Strictly No Smoking:</strong> Smoking is prohibited inside the units and within the compound.</li>
           <li><strong>No Illegal Activities:</strong> Illegal drugs, gambling, and any unlawful activities are strictly prohibited.</li>
           <li><strong>No Pets Allowed:</strong> Pets are not permitted inside the units or within the compound premises.</li>
-          <li><strong>Quiet Hours & Peace:</strong> Please observe silence from <strong>10:00 PM to 7:00 AM</strong>. No loud music, videoke, or loitering/drinking outside the units. Respect your neighbors.</li>
-          <li><strong>No Subleasing / Bed-spacing:</strong> Tenants are not allowed to sublease the unit or accept boarders without the landlord's written consent. Unauthorized subleasing is grounds for contract termination.</li>
-          <li><strong>Visitor Policy:</strong> You must inform the landlord beforehand if you have overnight visitors. Sudden additions to occupants are prohibited.</li>
-          <li><strong>Street Parking Only:</strong> No private parking space. You may park on the street, but <strong style="color: var(--terracotta);">"Park at your own risk"</strong>.</li>
+          <li><strong>Quiet Hours & Peace:</strong> Please observe silence from <strong>10:00 PM to 7:00 AM</strong>. No loud music, videoke, or loitering outside the units.</li>
+          <li><strong>No Subleasing / Bed-spacing:</strong> Tenants are not allowed to sublease the unit without the landlord's written consent.</li>
+          <li><strong>Visitor Policy:</strong> You must inform the landlord beforehand if you have overnight visitors.</li>
+          <li><strong>Street Parking Only:</strong> No private parking space. Park at your own risk.</li>
         </ul>
       </div>
     </div>
@@ -155,11 +160,11 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">Who handles repairs and maintenance? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Major structural repairs (roof leaks, main plumbing, or electrical issues not caused by misuse) are handled by the landlord. Tenants are responsible for minor upkeep and any damage caused by their own negligence.</p></div>
+          <div class="faq-answer"><p>Major structural repairs (roof leaks, main plumbing) are handled by the landlord. Tenants are responsible for minor upkeep and any damage caused by their own negligence.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How many units are available and where are they located? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>We have 9 units available. 8 units are located at 1800 Ostrich St. (Kabayani Road), Purok 6, Marikina, and 1 premium unit is at 45 Mango. Check the "Available" badges above for vacant units.</p></div>
+          <div class="faq-answer"><p>We have 9 units available. 8 units are located at 1800 Ostrich St. (Kabayani Road), Purok 6, Marikina, and 1 premium unit is at 45 Mango.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How do I apply or inquire? <i class="fas fa-plus"></i></button>
@@ -176,7 +181,7 @@
         <div class="contact-info">
           <span class="section-label">Contact Us</span>
           <h3>Interested to Rent?</h3>
-          <p>Fill out the form to check unit availability. We only accommodate serious and responsible tenants. I will get back to you as soon as possible.</p>
+          <p>Fill out the form to check unit availability. We only accommodate serious and responsible tenants.</p>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
             <span>1800 Ostrich St. (Kabayani Road), Purok 6,<br>Marikina City</span>
@@ -215,11 +220,11 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" required>
+                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="phone">Mobile Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" required>
+                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" autocomplete="tel" required>
               </div>
             </div>
             <div class="form-row">
@@ -230,7 +235,7 @@
               </div>
               <div class="form-group">
                 <label for="source_income">Source of Income</label>
-                <input type="text" id="source_income" name="source_income" placeholder="e.g. Employed, Freelancer, Business Owner" required>
+                <input type="text" id="source_income" name="source_income" placeholder="e.g. Employed, Freelancer" required>
               </div>
             </div>
             <div class="form-row">
@@ -244,11 +249,14 @@
                   <option value="4 or more">4 or more</option>
                 </select>
               </div>
+              
+              <!-- THE NEW AUTO-FILL UNIT SELECTION -->
               <div class="form-group">
-                <label for="unit_choice">Preferred Unit</label>
-                <select id="unit_choice" name="unit_choice" required>
-                  <option value="">Select an available unit...</option>
-                </select>
+                <label>Preferred Unit</label>
+                <div id="selected_unit_display" style="padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 500; color: var(--text-muted); font-size: 15px;">
+                  Select a unit above
+                </div>
+                <input type="hidden" id="unit_choice" name="unit_choice" required>
               </div>
             </div>
             <div class="form-row">
@@ -283,6 +291,11 @@
       <p>&copy; 2026 Rotche's Room 4 Rent. All rights reserved. | Marikina City</p>
     </div>
   </footer>
+
+  <!-- SCROLL TO TOP BUTTON -->
+  <button id="scrollTop" style="position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script src="script.js"></script>
 </body>
