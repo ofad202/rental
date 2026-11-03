@@ -89,4 +89,35 @@ nav a:hover { color: var(--terracotta); }
 
 /* FORM */
 .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.contact-info h3 { font-size: 3rem; margin-bottom:
+.contact-info h3 { font-size: 3rem; margin-bottom: 30px; }
+.contact-item { margin-bottom: 25px; display: flex; align-items: center; gap: 15px; font-size: 1rem; }
+.contact-item i { color: var(--terracotta); font-size: 1.2rem; }
+.contact-form { padding: 0; }
+.form-group { margin-bottom: 30px; }
+.form-group label { font-weight: 600; font-size: 0.85rem; margin-bottom: 10px; display: block; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 15px 0; border: none; border-bottom: 1px solid var(--border); background: transparent; font-family: inherit; font-size: 1rem; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-bottom-color: var(--terracotta); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.submit-btn { width: 100%; padding: 18px; background: var(--terracotta); color: #fff; border: none; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+.submit-btn:hover { background: var(--text-dark); }
+footer { background: var(--text-dark); color: rgba(255,255,255,0.6); padding: 50px; text-align: center; font-size: 0.9rem; }
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; padding-top: 120px; text-align: center; }
+  .hero-text { padding: 0; }
+  .hero-text p { margin: 0 auto 30px; }
+  .units-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-wrapper { grid-template-columns: 1fr; }
+  .trust-inner { flex-direction: column; gap: 30px; text-align: center; }
+  .trust-item { border-left: none; border-top: 2px solid var(--terracotta); padding-left: 0; padding-top: 20px; }
+}
+@media (max-width: 768px) {
+  .units-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .hero-text h1 { font-size: 3.5rem; }
+  .menu-toggle { display: block; }
+  nav { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-cream); display: none; padding: 30px; border-bottom: 1px solid var(--border); }
+  nav.active { display: block; }
+  nav ul { flex-direction: column; gap: 20px; }
+}
