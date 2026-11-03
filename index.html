@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Affordable rooms for rent in Marikina. Own water & electric connections. Rotche's Room 4 Rent.">
-  
+  <meta name="theme-color" content="#F4EFE6">
+
   <!-- Open Graph Tags for Facebook Sharing -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://marikinaroom4rent.vercel.app/">
@@ -22,6 +23,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+  <!-- Preload hero image (perf improvement #28) -->
+  <link rel="preload" as="image" href="hero.jpg">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +33,7 @@
   <header id="header">
     <div class="container header-inner">
       <a href="#home" class="logo">Rotche's Room 4 Rent</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-controls="mainNav" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
       <nav id="mainNav">
@@ -50,7 +54,13 @@
       <h1>Affordable Rooms <br>for <span>Rent.</span></h1>
       <p>Located in Marikina City. Perfect for working professionals, students, and small families. Choose from our 9 well-maintained units.</p>
       <a href="#units" class="hero-btn">View Available Units</a>
-      <div class="hero-availability" id="hero-availability-text"></div>
+      <div class="hero-availability" id="hero-availability-text" aria-live="polite"></div>
+      <!-- NEW: trust chips under CTA (design fix #1) -->
+      <ul class="hero-trust">
+        <li><i class="fas fa-bolt"></i> Own meters</li>
+        <li><i class="fas fa-shield-alt"></i> Gated compound</li>
+        <li><i class="fas fa-tag"></i> From ₱4,500</li>
+      </ul>
     </div>
     <div class="hero-image">
       <div class="hero-badge" id="heroBadge">
@@ -63,7 +73,7 @@
     <div class="container trust-inner">
       <div class="trust-item">
         <strong>9</strong>
-        <span>Well-Maintained Units</span>
+        <span>Total Units</span>
       </div>
       <div class="trust-item">
         <strong>100%</strong>
@@ -87,6 +97,12 @@
         <p class="section-desc">We have 9 units available across our properties. Every unit has its own direct water and electric connection.</p>
       </div>
       <div class="units-grid" id="rooms-container"></div>
+      <!-- NEW: noscript fallback -->
+      <noscript>
+        <p style="text-align:center; padding: 40px 20px; background:#fff; border-radius: 16px; color: var(--text-dark);">
+          Please enable JavaScript to view available units, or call <a href="tel:+639535216790" style="color: var(--terracotta); font-weight:600;">+63 953 521 6790</a> to inquire.
+        </p>
+      </noscript>
     </div>
   </section>
 
@@ -107,7 +123,7 @@
           <h4>Safe & Secure</h4>
           <p>Gated compound with a responsive landlord. Safe for solo living or small families.</p>
         </div>
-        <div class="feature-box">
+        <div class="feature-box feature-box--featured">
           <div class="feature-icon"><i class="fas fa-bolt"></i></div>
           <h4>Own Utility Connections</h4>
           <p>Each unit has its own direct water and electric connection. Transparent billing, you pay exactly what you consume.</p>
@@ -148,27 +164,27 @@
       <div class="faq-grid">
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How much is the rent and what's included? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Rent ranges from ₱4,500 to ₱13,000. The ₱4,500 units are all-in-one rooms (CR and kitchen inside). The ₱5,500 units are more spacious with a separate CR, kitchen, and a large sink. Units 1 & 5 are spacious 2-door units (₱6,000), and Unit 9 is a 2-storey house with a rooftop (₱13,000). Electricity and water are not included as each unit has its own direct connection.</p></div>
+          <div class="faq-answer"><div><p>Rent ranges from ₱4,500 to ₱13,000. The ₱4,500 units are all-in-one rooms (CR and kitchen inside). The ₱5,500 units are more spacious with a separate CR, kitchen, and a large sink. Units 1 &amp; 5 are spacious 2-door units (₱6,000), and Unit 9 is a 2-storey house with a rooftop (₱13,000). Electricity and water are not included as each unit has its own direct connection.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">What are the requirements to move in? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>You will need to provide a valid government ID, sign a 1-year lease contract (renewable annually), and settle the 1-month advance and 1-month deposit before moving in.</p></div>
+          <div class="faq-answer"><div><p>You will need to provide a valid government ID, sign a 1-year lease contract (renewable annually), and settle the 1-month advance and 1-month deposit before moving in.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How do I pay the rent? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Payments can be made via Cash, GCash, or Bank Transfer.</p></div>
+          <div class="faq-answer"><div><p>Payments can be made via Cash, GCash, or Bank Transfer.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">Who handles repairs and maintenance? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>Major structural repairs (roof leaks, main plumbing) are handled by the landlord. Tenants are responsible for minor upkeep and any damage caused by their own negligence.</p></div>
+          <div class="faq-answer"><div><p>Major structural repairs (roof leaks, main plumbing) are handled by the landlord. Tenants are responsible for minor upkeep and any damage caused by their own negligence.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How many units are available and where are they located? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>We have 9 units available. 8 units are located at 1800 Ostrich St. (Kabayani Road), Purok 6, Marikina, and 1 premium unit is at 45 Mango.</p></div>
+          <div class="faq-answer"><div><p>We have 9 units available. 8 units are located at 1800 Ostrich St. (Kabayani Road), Purok 6, Marikina, and 1 premium unit is at 45 Mango.</p></div></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How do I apply or inquire? <i class="fas fa-plus"></i></button>
-          <div class="faq-answer"><p>You can fill out the inquiry form on this website to get screened, or send us a message on Facebook or Telegram.</p></div>
+          <div class="faq-answer"><div><p>You can fill out the inquiry form on this website to get screened, or send us a message on Facebook or Telegram.</p></div></div>
         </div>
       </div>
     </div>
@@ -192,23 +208,23 @@
           </div>
           <div class="contact-item">
             <i class="fab fa-telegram-plane"></i>
-            <a href="https://t.me/JoseOmbrog" target="_blank" rel="noopener">@JoseOmbrog (Telegram)</a>
+            <a href="https://t.me/JoseOmbrog" target="_blank" rel="noopener noreferrer">@JoseOmbrog (Telegram)</a>
           </div>
           <div class="contact-item">
             <i class="fab fa-facebook"></i>
-            <a href="https://www.facebook.com/rresidences" target="_blank" rel="noopener">Message us on Facebook</a>
+            <a href="https://www.facebook.com/rresidences" target="_blank" rel="noopener noreferrer">Message us on Facebook</a>
           </div>
 
-          <div style="margin-top: 20px; margin-bottom: 20px;">
-            <h4 style="font-family: var(--font-body); font-size: 1rem; color: var(--text-dark); margin-bottom: 10px;">Main Property (Units 1-8)</h4>
-            <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-              <iframe width="100%" height="100%" style="border:0; filter: grayscale(20%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Ostrich+Ostrich,+Marikina&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
+          <div class="map-block">
+            <h4>Main Property (Units 1-8)</h4>
+            <div class="map-embed">
+              <iframe title="Map of main property — Ostrich St., Marikina" width="100%" height="100%" style="border:0; filter: grayscale(20%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Ostrich+Ostrich,+Marikina&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
             </div>
           </div>
-          <div>
-            <h4 style="font-family: var(--font-body); font-size: 1rem; color: var(--text-dark); margin-bottom: 10px;">Premium Unit (Unit 9)</h4>
-            <div style="width: 100%; height: 180px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-              <iframe width="100%" height="100%" style="border:0; filter: grayscale(20%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=45+Mango,+Marikina,+Metro+Manila&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
+          <div class="map-block">
+            <h4>Premium Unit (Unit 9)</h4>
+            <div class="map-embed">
+              <iframe title="Map of premium unit — 45 Mango, Marikina" width="100%" height="100%" style="border:0; filter: grayscale(20%);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=45+Mango,+Marikina,+Metro+Manila&t=&z=17&ie=UTF8&iwloc=B&output=embed"></iframe>
             </div>
           </div>
         </div>
@@ -216,22 +232,22 @@
         <div class="contact-form">
           <span class="section-label" style="margin-bottom: 8px;">Get Started</span>
           <h3>Tenant Inquiry Form</h3>
-          <form id="rental-form" action="https://formspree.io/f/mzeekzpa" method="POST">
+          <form id="rental-form" action="https://formspree.io/f/mzeekzpa" method="POST" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" autocomplete="name" required>
+                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz" autocomplete="name" minlength="2" required>
               </div>
               <div class="form-group">
                 <label for="phone">Mobile Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" autocomplete="tel" required>
+                <input type="tel" id="phone" name="phone" placeholder="0917 123 4567" autocomplete="tel" pattern="[0-9+\s\-()]{7,15}" required>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="tenant_fb">Your Facebook Profile Link</label>
                 <input type="text" id="tenant_fb" name="tenant_fb" placeholder="https://facebook.com/your.profile" required>
-                <small style="display: block; margin-top: 5px; color: var(--text-muted); font-size: 0.75rem;">Note: A valid government ID will be required upon move-in.</small>
+                <small>Note: A valid government ID will be required upon move-in.</small>
               </div>
               <div class="form-group">
                 <label for="source_income">Source of Income</label>
@@ -249,24 +265,24 @@
                   <option value="4 or more">4 or more</option>
                 </select>
               </div>
-              
-              <!-- THE NEW AUTO-FILL UNIT SELECTION -->
+
               <div class="form-group">
                 <label>Preferred Unit</label>
-                <div id="selected_unit_display" style="padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: #fff; font-weight: 500; color: var(--text-muted); font-size: 15px;">
+                <div id="selected_unit_display" aria-live="polite" role="status">
                   Select a unit above
                 </div>
-                <input type="hidden" id="unit_choice" name="unit_choice" required>
+                <!-- Hidden input no longer required (JS guards it) -->
+                <input type="hidden" id="unit_choice" name="unit_choice">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="guarantor_name">Guarantor Name</label>
-                <input type="text" id="guarantor_name" name="guarantor_name" placeholder="Guarantor's full name" required>
+                <input type="text" id="guarantor_name" name="guarantor_name" placeholder="Guarantor's full name" autocomplete="name" required>
               </div>
               <div class="form-group">
                 <label for="guarantor_phone">Guarantor Contact Number</label>
-                <input type="tel" id="guarantor_phone" name="guarantor_phone" placeholder="0917 123 4567" required>
+                <input type="tel" id="guarantor_phone" name="guarantor_phone" placeholder="0917 123 4567" autocomplete="tel" pattern="[0-9+\s\-()]{7,15}" required>
               </div>
             </div>
             <div class="form-group">
@@ -279,7 +295,7 @@
             </div>
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
             <button type="submit" class="submit-btn" id="submitBtn">Send Inquiry</button>
-            <div id="formStatus" style="margin-top: 15px; text-align: center; font-weight: 500; font-size: 0.9rem; display: none;"></div>
+            <div id="formStatus" role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -288,12 +304,12 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 Rotche's Room 4 Rent. All rights reserved. | Marikina City</p>
+      <p>&copy; <span id="year">2026</span> Rotche's Room 4 Rent. All rights reserved. | Marikina City</p>
     </div>
   </footer>
 
-  <!-- SCROLL TO TOP BUTTON -->
-  <button id="scrollTop" style="position: fixed; bottom: 30px; right: 30px; background: var(--text-dark); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: background 0.3s;">
+  <!-- SCROLL TO TOP BUTTON (moved styles to CSS) -->
+  <button id="scrollTop" aria-label="Scroll to top">
     <i class="fas fa-arrow-up"></i>
   </button>
 
