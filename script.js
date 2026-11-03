@@ -1,7 +1,5 @@
 /* ========================================================
    ROTCHE'S ROOM 4 RENT — MAIN SCRIPT
-   1 = Available (Bukas)
-   0 = Occupied (Sarado)
 ======================================================== */
 const rooms = [
   { id: 1, price: 6000,  floor: '1st Floor', status: 1, desc: 'Spacious 2-Door Unit' },
@@ -16,20 +14,18 @@ const rooms = [
 ];
 
 const roomsContainer   = document.getElementById('rooms-container');
-const roomDropdown     = document.getElementById('unit_choice');
 const heroAvailability = document.getElementById('hero-availability-text');
 const heroBadge        = document.getElementById('heroBadge');
 
 let availableRoomsList = [];
 
-/* ---------- HELPERS ---------- */
 function formatPrice(price) {
   return '₱' + price.toLocaleString();
 }
 
-/* ---------- RENDER UNITS + DROPDOWN + HERO ---------- */
+/* ---------- RENDER UNITS ---------- */
 function renderRooms() {
-  availableRoomsList = [];   // reset every render — no duplicates
+  availableRoomsList = [];   
   let htmlContent = '';
 
   rooms.forEach(room => {
@@ -37,20 +33,14 @@ function renderRooms() {
     if (isAvailable) availableRoomsList.push({ id: room.id, price: room.price });
 
     const priceStr     = formatPrice(room.price);
-    
-    // ✅ ADDRESS UPDATED HERE
     const roomLocation = room.location || 'Ostrich St. (Kabayani Road), Marikina';
-    
     const roomDesc     = room.desc || 'Own CR';
     const shortTag     = room.desc.split('(')[0].trim();
 
     htmlContent += `
       <div class="unit-card${isAvailable ? '' : ' occupied'}">
         <div class="unit-img" aria-label="Unit ${room.id} photo">
-          <img src="room${room.id}.jpg"
-               alt="Unit ${room.id}"
-               loading="lazy"
-               onerror="this.remove(); this.parentElement.classList.add('img-missing');">
+          <img src="room${room.id}.jpg" alt="Unit ${room.id}" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-missing');">
           <span class="unit-floor-badge">${room.floor}</span>
           <span class="unit-status-badge ${isAvailable ? 'status-available' : 'status-occupied'}">
             ${isAvailable ? 'Available' : 'Occupied'}
@@ -61,58 +51,65 @@ function renderRooms() {
           <h3>Unit ${room.id}</h3>
           <span class="unit-tag">${shortTag}</span>
           <p class="unit-location"><i class="fas fa-map-marker-alt"></i> ${roomLocation}</p>
-
           <ul class="unit-features">
             <li><i class="fas fa-check"></i> ${roomDesc}</li>
             <li><i class="fas fa-check"></i> Own Water & Electric Connection</li>
             <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
           </ul>
-
           ${isAvailable
-            ? `<a href="#inquire" class="unit-btn">Inquire Now</a>`
+            ? `<a href="#inquire" class="unit-btn" onclick="selectUnit(${room.id}, '${priceStr}')">Inquire Now</a>`
             : `<span class="unit-btn" style="border-color: var(--border); color: var(--text-muted); cursor: not-allowed;">Occupied</span>`}
         </div>
       </div>
     `;
   });
 
-  roomsContainer.innerHTML = htmlContent;
-
-  /* Dropdown */
-  roomDropdown.disabled = false;
-  roomDropdown.innerHTML = '<option value="">Select an available unit...</option>';
-  if (availableRoomsList.length > 0) {
-    availableRoomsList.forEach(room => {
-      const opt = document.createElement('option');
-      opt.value = `Unit ${room.id}`;
-      opt.textContent = `Unit ${room.id} — ${formatPrice(room.price)}/month`;
-      roomDropdown.appendChild(opt);
-    });
+  // THE EMPTY STATE FALLBACK
+  if (availableRoomsList.length === 0) {
+    roomsContainer.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+        <i class="fas fa-door-closed" style="font-size: 3rem; color: var(--terracotta); margin-bottom: 20px;"></i>
+        <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px;">Fully Booked!</h3>
+        <p>All our units are currently occupied. Please check back later or contact us to join the waitlist.</p>
+      </div>
+    `;
   } else {
-    roomDropdown.innerHTML = '<option value="">No vacant units at the moment</option>';
-    roomDropdown.disabled = true;
+    roomsContainer.innerHTML = htmlContent;
   }
 
   /* Hero availability text */
   if (availableRoomsList.length > 0) {
     const roomNames = availableRoomsList.map(r => `Unit ${r.id}`).join(', ');
-    heroAvailability.innerHTML =
-      `<i class="fas fa-circle" style="font-size: 8px; color: var(--green); vertical-align: middle; margin-right: 5px;"></i> ${availableRoomsList.length} Unit(s) Available (${roomNames})`;
+    heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--green); vertical-align: middle; margin-right: 5px;"></i> ${availableRoomsList.length} Unit(s) Available (${roomNames})`;
   } else {
-    heroAvailability.innerHTML =
-      `<i class="fas fa-circle" style="font-size: 8px; color: var(--red); vertical-align: middle; margin-right: 5px;"></i> Fully Occupied`;
+    heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--red); vertical-align: middle; margin-right: 5px;"></i> Fully Occupied`;
   }
 
-  /* Hero badge price — dynamic minimum */
+  /* Hero badge price */
   if (heroBadge && rooms.length) {
     const minPrice = Math.min(...rooms.map(r => r.price));
     heroBadge.innerHTML = `${formatPrice(minPrice)} <span>Starting / month</span>`;
   }
 }
 
+/* ---------- ONE-CLICK AUTO-FILL LOGIC ---------- */
+function selectUnit(id, price) {
+  const display = document.getElementById('selected_unit_display');
+  const hiddenInput = document.getElementById('unit_choice');
+  
+  // Update visual display
+  display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--green);"></i> Unit ${id} (${price}/month)`;
+  display.style.borderColor = 'var(--terracotta)';
+  display.style.background = 'var(--bg-cream)';
+  display.style.color = 'var(--text-dark)';
+  
+  // Update hidden input for Formspree
+  hiddenInput.value = `Unit ${id} - ${price}/month`;
+}
+
 renderRooms();
 
-/* ---------- HEADER SCROLL EFFECT (rAF-debounced) ---------- */
+/* ---------- HEADER SCROLL EFFECT ---------- */
 const header = document.getElementById('header');
 let scrollTicking = false;
 window.addEventListener('scroll', () => {
@@ -125,10 +122,18 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+/* ---------- SCROLL TO TOP ---------- */
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 /* ---------- MOBILE MENU TOGGLE ---------- */
 const menuToggle = document.getElementById('menuToggle');
 const mainNav    = document.getElementById('mainNav');
-
 menuToggle.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('active');
   menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
@@ -147,7 +152,7 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
-/* ---------- DATE PICKER (min = today) ---------- */
+/* ---------- DATE PICKER ---------- */
 const dateInput = document.getElementById('move_date');
 if (dateInput) {
   const today = new Date();
@@ -162,14 +167,12 @@ const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(btn => {
   btn.addEventListener('click', () => {
     const parentItem = btn.parentElement;
-
     document.querySelectorAll('.faq-item').forEach(item => {
       if (item !== parentItem && item.classList.contains('active')) {
         item.classList.remove('active');
         item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       }
     });
-
     const isOpen = parentItem.classList.toggle('active');
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
@@ -184,11 +187,13 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Guard: no rooms available
-    if (roomDropdown.disabled) {
+    // Guard: Did they click a unit?
+    const unitChoice = document.getElementById('unit_choice').value;
+    if (!unitChoice) {
       formStatus.style.display = 'block';
       formStatus.style.color = '#C43A2B';
-      formStatus.innerHTML = 'No vacant units at the moment. Please check back later.';
+      formStatus.innerHTML = 'Please select an available unit from the cards above first.';
+      window.scrollTo({ top: document.getElementById('units').offsetTop, behavior: 'smooth' });
       return;
     }
 
@@ -211,6 +216,14 @@ if (form) {
         formStatus.style.color = '#2E7D4A';
         formStatus.innerHTML = 'Inquiry sent successfully. We will contact you soon.';
         form.reset();
+        
+        // Reset the custom visual display
+        const display = document.getElementById('selected_unit_display');
+        display.innerHTML = 'Select a unit above';
+        display.style.borderColor = 'var(--border)';
+        display.style.background = '#fff';
+        display.style.color = 'var(--text-muted)';
+        
       } else {
         const msg = (data.errors && data.errors.length)
           ? data.errors.map(err => err.message || err.field).join(', ')
