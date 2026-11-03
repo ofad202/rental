@@ -68,7 +68,7 @@ function renderRooms() {
   if (availableRoomsList.length === 0) {
     roomsContainer.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-        <i class="fas fa-door-closed" style="font-size: 3rem; color: var(--terracotta); margin-bottom: 20px;"></i>
+        <i class="fas fa-door-closed" style="font-size: 3rem; color: var(--maroon); margin-bottom: 20px;"></i>
         <h3 style="font-family: var(--font-display); font-size: 2rem; margin-bottom: 10px;">Fully Booked!</h3>
         <p>All our units are currently occupied. Please check back later or contact us to join the waitlist.</p>
       </div>
@@ -97,13 +97,11 @@ function selectUnit(id, price) {
   const display = document.getElementById('selected_unit_display');
   const hiddenInput = document.getElementById('unit_choice');
   
-  // Update visual display
-  display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--green);"></i> Unit ${id} (${price}/month)`;
-  display.style.borderColor = 'var(--terracotta)';
+  display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--maroon);"></i> Unit ${id} (${price}/month)`;
+  display.style.borderColor = 'var(--maroon)';
   display.style.background = 'var(--bg-cream)';
   display.style.color = 'var(--text-dark)';
   
-  // Update hidden input for Formspree
   hiddenInput.value = `Unit ${id} - ${price}/month`;
 }
 
