@@ -64,7 +64,7 @@ function renderRooms() {
     `;
   });
 
-  // THE EMPTY STATE FALLBACK
+  // EMPTY STATE FALLBACK
   if (availableRoomsList.length === 0) {
     roomsContainer.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
@@ -97,13 +97,11 @@ function selectUnit(id, price) {
   const display = document.getElementById('selected_unit_display');
   const hiddenInput = document.getElementById('unit_choice');
   
-  // Update visual display
   display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--green);"></i> Unit ${id} (${price}/month)`;
   display.style.borderColor = 'var(--terracotta)';
   display.style.background = 'var(--bg-cream)';
   display.style.color = 'var(--text-dark)';
   
-  // Update hidden input for Formspree
   hiddenInput.value = `Unit ${id} - ${price}/month`;
 }
 
@@ -186,8 +184,7 @@ const formStatus = document.getElementById('formStatus');
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    // Guard: Did they click a unit?
+    
     const unitChoice = document.getElementById('unit_choice').value;
     if (!unitChoice) {
       formStatus.style.display = 'block';
@@ -217,7 +214,6 @@ if (form) {
         formStatus.innerHTML = 'Inquiry sent successfully. We will contact you soon.';
         form.reset();
         
-        // Reset the custom visual display
         const display = document.getElementById('selected_unit_display');
         display.innerHTML = 'Select a unit above';
         display.style.borderColor = 'var(--border)';
