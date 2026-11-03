@@ -2,32 +2,30 @@
    ROTCHE'S ROOM 4 RENT — MAIN SCRIPT
 ======================================================== */
 const rooms = [
-  { id: 1, price: 6000,  floor: '1st Floor', status: 1, desc: 'Spacious 2-Door Unit', tag: '2-Door' },
-  { id: 2, price: 5500,  floor: '1st Floor', status: 1, desc: 'Separate CR & Kitchen with Large Sink', tag: 'Separate CR' },
-  { id: 3, price: 4500,  floor: '1st Floor', status: 1, desc: 'All-in-one (CR & Kitchen Inside)', tag: 'All-in-one' },
-  { id: 4, price: 4500,  floor: '1st Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)', tag: 'All-in-one' },
-  { id: 5, price: 6000,  floor: '2nd Floor', status: 1, desc: 'Spacious 2-Door Unit', tag: '2-Door' },
-  { id: 6, price: 5500,  floor: '2nd Floor', status: 0, desc: 'Separate CR & Kitchen with Large Sink', tag: 'Separate CR' },
-  { id: 7, price: 4500,  floor: '2nd Floor', status: 1, desc: 'All-in-one (CR & Kitchen Inside)', tag: 'All-in-one' },
-  { id: 8, price: 4500,  floor: '2nd Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)', tag: 'All-in-one' },
-  { id: 9, price: 13000, floor: '2-Storey',  status: 1, location: '45 Mango, Marikina', desc: '2-Storey House with Rooftop', tag: '2-Storey House' }
+  { id: 1, price: 6000,  floor: '1st Floor', status: 1, desc: 'Spacious 2-Door Unit' },
+  { id: 2, price: 5500,  floor: '1st Floor', status: 1, desc: 'Separate CR & Kitchen with Large Sink' },
+  { id: 3, price: 4500,  floor: '1st Floor', status: 1, desc: 'All-in-one (CR & Kitchen Inside)' },
+  { id: 4, price: 4500,  floor: '1st Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)' },
+  { id: 5, price: 6000,  floor: '2nd Floor', status: 1, desc: 'Spacious 2-Door Unit' },
+  { id: 6, price: 5500,  floor: '2nd Floor', status: 0, desc: 'Separate CR & Kitchen with Large Sink' },
+  { id: 7, price: 4500,  floor: '2nd Floor', status: 1, desc: 'All-in-one (CR & Kitchen Inside)' },
+  { id: 8, price: 4500,  floor: '2nd Floor', status: 0, desc: 'All-in-one (CR & Kitchen Inside)' },
+  { id: 9, price: 13000, floor: '2-Storey',  status: 1, location: '45 Mango, Marikina', desc: '2-Storey House with Rooftop' }
 ];
 
 const roomsContainer   = document.getElementById('rooms-container');
 const heroAvailability = document.getElementById('hero-availability-text');
 const heroBadge        = document.getElementById('heroBadge');
 
-// CHANGED: Intl.NumberFormat instead of manual toLocaleString
-const priceFmt = new Intl.NumberFormat('en-PH', {
-  style: 'currency', currency: 'PHP', maximumFractionDigits: 0
-});
-function formatPrice(price) { return priceFmt.format(price); }
-
 let availableRoomsList = [];
+
+function formatPrice(price) {
+  return '₱' + price.toLocaleString();
+}
 
 /* ---------- RENDER UNITS ---------- */
 function renderRooms() {
-  availableRoomsList = [];
+  availableRoomsList = [];   
   let htmlContent = '';
 
   rooms.forEach(room => {
@@ -37,13 +35,12 @@ function renderRooms() {
     const priceStr     = formatPrice(room.price);
     const roomLocation = room.location || 'Ostrich St. (Kabayani Road), Marikina';
     const roomDesc     = room.desc || 'Own CR';
-    const shortTag     = room.tag || room.desc;  // CHANGED: use explicit tag field
+    const shortTag     = room.desc.split('(')[0].trim();
 
     htmlContent += `
       <div class="unit-card${isAvailable ? '' : ' occupied'}">
         <div class="unit-img" aria-label="Unit ${room.id} photo">
-          <img src="room${room.id}.jpg" alt="Unit ${room.id}" loading="lazy"
-               onerror="this.style.display='none'; this.parentElement.classList.add('img-missing');">
+          <img src="room${room.id}.jpg" alt="Unit ${room.id}" loading="lazy" onerror="this.remove(); this.parentElement.classList.add('img-missing');">
           <span class="unit-floor-badge">${room.floor}</span>
           <span class="unit-status-badge ${isAvailable ? 'status-available' : 'status-occupied'}">
             ${isAvailable ? 'Available' : 'Occupied'}
@@ -60,14 +57,14 @@ function renderRooms() {
             <li><i class="fas fa-check"></i> 1 Month Advance & 1 Month Deposit</li>
           </ul>
           ${isAvailable
-            ? `<button type="button" class="unit-btn" data-id="${room.id}" data-price="${priceStr}">Inquire Now</button>`
-            : `<button type="button" class="unit-btn unit-btn--notify" data-notify="${room.id}">Notify me when available</button>`}
+            ? `<a href="#inquire" class="unit-btn" onclick="selectUnit(${room.id}, '${priceStr}')">Inquire Now</a>`
+            : `<span class="unit-btn" style="border-color: var(--border); color: var(--text-muted); cursor: not-allowed;">Occupied</span>`}
         </div>
       </div>
     `;
   });
 
-  // Empty state
+  // THE EMPTY STATE FALLBACK
   if (availableRoomsList.length === 0) {
     roomsContainer.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #fff; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
@@ -80,7 +77,7 @@ function renderRooms() {
     roomsContainer.innerHTML = htmlContent;
   }
 
-  // Hero availability
+  /* Hero availability text */
   if (availableRoomsList.length > 0) {
     const roomNames = availableRoomsList.map(r => `Unit ${r.id}`).join(', ');
     heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--green); vertical-align: middle; margin-right: 5px;"></i> ${availableRoomsList.length} Unit(s) Available (${roomNames})`;
@@ -88,72 +85,48 @@ function renderRooms() {
     heroAvailability.innerHTML = `<i class="fas fa-circle" style="font-size: 8px; color: var(--red); vertical-align: middle; margin-right: 5px;"></i> Fully Occupied`;
   }
 
-  // Hero badge — CHANGED: wrap price in <strong>; hide when no rooms
+  /* Hero badge price */
   if (heroBadge && rooms.length) {
     const minPrice = Math.min(...rooms.map(r => r.price));
-    heroBadge.innerHTML = `<strong>${formatPrice(minPrice)}</strong> <span>Starting / month</span>`;
+    heroBadge.innerHTML = `${formatPrice(minPrice)} <span>Starting / month</span>`;
   }
 }
-
-/* ---------- EVENT DELEGATION (replaces inline onclick) ---------- */
-roomsContainer.addEventListener('click', (e) => {
-  const inquireBtn = e.target.closest('[data-id]');
-  if (inquireBtn) {
-    selectUnit(inquireBtn.dataset.id, inquireBtn.dataset.price);
-    return;
-  }
-  const notifyBtn = e.target.closest('[data-notify]');
-  if (notifyBtn) {
-    // Smooth-scroll to the form and pre-fill message
-    const msgField = document.getElementById('message');
-    if (msgField) {
-      msgField.value = `Please notify me when Unit ${notifyBtn.dataset.notify} becomes available.`;
-    }
-    document.getElementById('inquire').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(() => document.getElementById('name')?.focus(), 700);
-  }
-});
 
 /* ---------- ONE-CLICK AUTO-FILL LOGIC ---------- */
 function selectUnit(id, price) {
   const display = document.getElementById('selected_unit_display');
   const hiddenInput = document.getElementById('unit_choice');
-
+  
+  // Update visual display
   display.innerHTML = `<i class="fas fa-check-circle" style="color: var(--green);"></i> Unit ${id} (${price}/month)`;
   display.style.borderColor = 'var(--terracotta)';
   display.style.background = 'var(--bg-cream)';
   display.style.color = 'var(--text-dark)';
-
+  
+  // Update hidden input for Formspree
   hiddenInput.value = `Unit ${id} - ${price}/month`;
-}
-
-function resetUnitDisplay() {
-  const display = document.getElementById('selected_unit_display');
-  display.innerHTML = 'Select a unit above';
-  display.style.borderColor = 'var(--border)';
-  display.style.background = '#fff';
-  display.style.color = 'var(--text-muted)';
-  document.getElementById('unit_choice').value = '';
 }
 
 renderRooms();
 
-/* ---------- HEADER + SCROLL TOP (combined, throttled) ---------- */
-const header       = document.getElementById('header');
-const scrollTopBtn = document.getElementById('scrollTop');
-let scrollTicking  = false;
-
+/* ---------- HEADER SCROLL EFFECT ---------- */
+const header = document.getElementById('header');
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
-    const y = window.scrollY;
-    header.classList.toggle('scrolled', y > 50);
-    scrollTopBtn.style.display = y > 300 ? 'block' : 'none';
-    scrollTicking = false;
-  });
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
 }, { passive: true });
 
+/* ---------- SCROLL TO TOP ---------- */
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
 scrollTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
@@ -161,17 +134,7 @@ scrollTopBtn.addEventListener('click', () => {
 /* ---------- MOBILE MENU TOGGLE ---------- */
 const menuToggle = document.getElementById('menuToggle');
 const mainNav    = document.getElementById('mainNav');
-
-function closeMenu() {
-  mainNav.classList.remove('active');
-  menuToggle.setAttribute('aria-expanded', 'false');
-  const icon = menuToggle.querySelector('i');
-  icon.classList.add('fa-bars');
-  icon.classList.remove('fa-times');
-}
-
-menuToggle.addEventListener('click', (e) => {
-  e.stopPropagation();
+menuToggle.addEventListener('click', () => {
   const isOpen = mainNav.classList.toggle('active');
   menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   const icon = menuToggle.querySelector('i');
@@ -179,24 +142,14 @@ menuToggle.addEventListener('click', (e) => {
   icon.classList.toggle('fa-times', isOpen);
 });
 
-// Close on nav link click
 document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', closeMenu);
-});
-
-// NEW: close on outside click
-document.addEventListener('click', (e) => {
-  if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-    closeMenu();
-  }
-});
-
-// NEW: close on Escape
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && mainNav.classList.contains('active')) {
-    closeMenu();
-    menuToggle.focus();
-  }
+  link.addEventListener('click', () => {
+    mainNav.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    const icon = menuToggle.querySelector('i');
+    icon.classList.add('fa-bars');
+    icon.classList.remove('fa-times');
+  });
 });
 
 /* ---------- DATE PICKER ---------- */
@@ -234,19 +187,13 @@ if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Guard: did they select a unit?
+    // Guard: Did they click a unit?
     const unitChoice = document.getElementById('unit_choice').value;
     if (!unitChoice) {
       formStatus.style.display = 'block';
       formStatus.style.color = '#C43A2B';
-      formStatus.textContent = 'Please select an available unit from the cards above first.';
+      formStatus.innerHTML = 'Please select an available unit from the cards above first.';
       window.scrollTo({ top: document.getElementById('units').offsetTop, behavior: 'smooth' });
-      return;
-    }
-
-    // CHANGED: trigger native HTML5 validation since form has novalidate
-    if (!form.checkValidity()) {
-      form.reportValidity();
       return;
     }
 
@@ -267,28 +214,31 @@ if (form) {
       if (response.ok && !data.errors) {
         formStatus.style.display = 'block';
         formStatus.style.color = '#2E7D4A';
-        formStatus.textContent = 'Inquiry sent successfully. We will contact you soon.';
+        formStatus.innerHTML = 'Inquiry sent successfully. We will contact you soon.';
         form.reset();
-        resetUnitDisplay();  // CHANGED: explicit reset function
+        
+        // Reset the custom visual display
+        const display = document.getElementById('selected_unit_display');
+        display.innerHTML = 'Select a unit above';
+        display.style.borderColor = 'var(--border)';
+        display.style.background = '#fff';
+        display.style.color = 'var(--text-muted)';
+        
       } else {
         const msg = (data.errors && data.errors.length)
           ? data.errors.map(err => err.message || err.field).join(', ')
           : 'Something went wrong. Please try again.';
         formStatus.style.display = 'block';
         formStatus.style.color = '#C43A2B';
-        formStatus.textContent = msg;
+        formStatus.innerHTML = msg;
       }
     } catch (error) {
       formStatus.style.display = 'block';
       formStatus.style.color = '#C43A2B';
-      formStatus.textContent = 'Network error. Please check your connection.';
+      formStatus.innerHTML = 'Network error. Please check your connection.';
     } finally {
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
     }
   });
 }
-
-/* ---------- DYNAMIC FOOTER YEAR ---------- */
-const yearEl = document.getElementById('year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
