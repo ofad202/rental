@@ -60,7 +60,7 @@ ul { list-style: none; }
 }
 
 /* =========================================
-   HEADER - FULL WIDTH & SOLID
+   HEADER - SLIMMER HEIGHT
    ========================================= */
 header {
   position: fixed; 
@@ -68,7 +68,7 @@ header {
   width: 100%; max-width: 100%;
   z-index: 9999; 
   transition: all 0.4s ease;
-  padding: 20px 5%;
+  padding: 14px 5%; /* <-- Slimmer padding */
   background: var(--bg-cream); 
   border-bottom: 1px solid color-mix(in srgb, var(--terracotta) 10%, transparent);
   box-shadow: 0 4px 15px rgba(0,0,0,0.02);
@@ -76,7 +76,7 @@ header {
 }
 
 header.scrolled {
-  padding: 14px 5%;
+  padding: 10px 5%; /* <-- Even slimmer on scroll */
   background: var(--surface); 
   box-shadow: var(--shadow-md);
 }
@@ -86,26 +86,31 @@ header.scrolled {
   gap: 20px; max-width: 1600px; margin: 0 auto;
 }
 
-/* --- UPGRADED LOGO --- */
+/* --- UPGRADED LOGO (Bold & Catchy) --- */
 .logo {
   font-family: var(--font-display); 
-  font-size: 1.6rem; 
-  font-weight: 600;
-  color: var(--text-dark); /* Dark Charcoal for sharp contrast */
+  font-size: 1.5rem; 
+  font-weight: 700; /* <-- Made Bold */
+  color: var(--text-dark); 
   font-style: italic; 
   transition: var(--transition);
   white-space: nowrap;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.5px; /* <-- Tighter spacing */
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 4px; /* <-- Closed the gap */
 }
-.logo:hover { opacity: 0.8; }
+
+.logo:hover { 
+  color: var(--terracotta); /* Nice hover effect */
+  opacity: 0.9; 
+}
 
 .logo-highlight {
-  color: var(--terracotta); /* Makes the '4' stand out */
-  font-size: 1.8rem;
+  color: var(--terracotta); 
+  font-size: 1.7rem; /* Keeps the '4' slightly larger */
   font-style: normal;
+  font-weight: 600; 
 }
 
 nav ul { display: flex; gap: 32px; align-items: center; }
@@ -466,8 +471,8 @@ footer {
   .form-row { grid-template-columns: 1fr; }
   .contact-form { padding: 40px 20px; }
   
-  header { padding: 16px 5%; }
-  header.scrolled { padding: 12px 5%; }
+  header { padding: 14px 5%; }
+  header.scrolled { padding: 10px 5%; }
   
   .logo { font-size: 1.3rem; }
   .menu-toggle { display: block; }
